@@ -1,7 +1,0 @@
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.exe.config
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.exe
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.pdb
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.csproj.AssemblyReference.cache
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.exe
-D:\Projects\Broadway\Broadway-800AM\Console\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.pdb
