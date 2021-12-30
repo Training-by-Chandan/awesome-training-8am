@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,24 @@ namespace ConsoleApp
         public static void Main()
         {
             //Add();
-            CastingExamples();
-
+            //CastingExamples();
+            CalculateAge();
             Console.ReadLine();
+        }
+
+        private static void CalculateAge()
+        {
+            var today = DateTime.Now;
+            Console.WriteLine($"Today => {today.ToString("MMMM dd, yyyy dddd hh:mm:ss tt")}");
+
+            Console.WriteLine("Enter the Date of Birth (dd/MM/YYYY)");
+            var dateStr = Console.ReadLine();
+            var dateArr = dateStr.Split('/');
+            var date = new DateTime(Convert.ToInt32(dateArr[2]), Convert.ToInt32(dateArr[1]), Convert.ToInt32(dateArr[0]));
+
+            var timeDiff = today - date;
+            var years = timeDiff.Days / 365;
+            Console.WriteLine($"{years} years old");
         }
 
         private static void ControlStatementExample()
