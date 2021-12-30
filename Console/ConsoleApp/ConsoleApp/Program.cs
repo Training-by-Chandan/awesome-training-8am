@@ -73,15 +73,13 @@ namespace ConsoleApp
 
         private static void CastingExamples()
         {
-
             {
-              char X = 'A';
+                char X = 'A';
                 X.ToString();
 
                 //Define block variable will be defines as in same block only not the othe block//
             }
-           //for just example X.Tostring(); is not possible//
-
+            //for just example X.Tostring(); is not possible//
 
             //implcit casting//
 
@@ -95,10 +93,8 @@ namespace ConsoleApp
             double d = f; //so i can do double d = c//
             //we can directly assign value//
 
-
-
             //explicting casting//
-            double d1 = 1234.567d; //f = floating point, m =decimal// 
+            double d1 = 1234.567d; //f = floating point, m =decimal//
             //float f1 = d1; we cannot do this , we can put float into double but cannot put double inn float//
             //because double 64 is double information and f  is single 32, but we can do by//
             float f1 = (float)d1; // it can be go in decimal value as well as double too//
@@ -106,7 +102,7 @@ namespace ConsoleApp
             long l1 = (long)f1; // or //
             //long l1 = (long)(float)d1;//
             int i1 = (int)l1; // or Convert.Toint32(f1); or it goes only whole number//
-            char c1 =(char)i1;
+            char c1 = (char)i1;
 
             //everything can be converted to string using 'Tostring();, for the case below string we need this//
 
@@ -116,31 +112,16 @@ namespace ConsoleApp
             //type conversion class//
             string str3 = "1"; //64 bit floaring point//
             string str4 = "A";
-            string str5 = "Tam"; // we cannot convert this error will come//  
+            string str5 = "Tam"; // we cannot convert this error will come//
             double d3 = 1241.1212;
             //now converting string into double then//
             double d4 = Convert.ToDouble(str3); // it means we can easily convert string by /tostring but converting 1 into double then
-           //int i2 = Convert.Toint32(str3);=
-            //or//
+                                                //int i2 = Convert.Toint32(str3);=
+                                                //or//
             int i2 = Convert.ToInt32(d3); //18+ overloads we can pass // u long means no neagative value//
             //for the decimal//
             decimal dec1 = Convert.ToDecimal(str3);
-                
-
-
-
-
-
-
-            
-
-            
-
-
-
         }
-
-
 
         public static void Add()
         {
