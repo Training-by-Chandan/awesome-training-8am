@@ -13,8 +13,22 @@ namespace ConsoleApp
         {
             //Add();
             //CastingExamples();
-            CalculateAge();
+            //CalculateAge();
+            //ControlStatementExample();
+            //SwitchStatementExample();
+            MultiplicationTable();
             Console.ReadLine();
+        }
+
+        private static void MultiplicationTable()
+        {
+            Console.WriteLine("Enter the number");
+            var num = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= 100; i = i + 2)
+            {
+                Console.WriteLine(i);
+                // Console.WriteLine($"{num} x {i} = {num * i}");
+            }
         }
 
         private static void CalculateAge()
@@ -32,43 +46,106 @@ namespace ConsoleApp
             Console.WriteLine($"{years} years old");
         }
 
+        private static void SwitchStatementExample()
+        {
+            Console.WriteLine("Enter the number");
+            //string input = Console.ReadLine();
+            int num = Convert.ToInt32(Console.ReadLine());
+            string day = "";
+            string type = "";
+
+            switch (num)
+            {
+                case 1:
+                    day = "Sunday";
+                    break;
+
+                case 2:
+                    day = "Monday";
+                    break;
+
+                case 3:
+                    day = "Tuesday";
+                    break;
+
+                case 4:
+                    day = "Wednesday";
+                    break;
+
+                case 5:
+                    day = "Thursday";
+                    break;
+
+                case 6:
+                    day = "Friday";
+                    break;
+
+                case 7:
+                    day = "Saturday";
+                    break;
+
+                default:
+                    day = "Holiday";
+                    break;
+            }
+            switch (num)
+            {
+                case 1:
+                case 7:
+                    type = "Weekends";
+                    break;
+
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    type = "Weekdays";
+                    break;
+
+                default:
+                    type = "N/A";
+                    break;
+            }
+
+            Console.WriteLine($"Days = {day} and Type = {type}");
+        }
+
         private static void ControlStatementExample()
         {
             Console.WriteLine("Enter the number");
             //string input = Console.ReadLine();
             int num = Convert.ToInt32(Console.ReadLine());
+            string day = "";
             if (num == 1)
-            {
-                Console.WriteLine("Sunday");
-            }
+                day = "Sunday";
             else if (num == 2)
-            {
-                Console.WriteLine("Monday");
-            }
+                day = "Monday";
             else if (num == 3)
-            {
-                Console.WriteLine("Tuesday");
-            }
+                day = "Tuesday";
             else if (num == 4)
-            {
-                Console.WriteLine("Wednesday");
-            }
+                day = "Wednesday";
             else if (num == 5)
-            {
-                Console.WriteLine("Thursday");
-            }
+                day = "Thursday";
             else if (num == 6)
-            {
-                Console.WriteLine("Friday");
-            }
+                day = "Friday";
             else if (num == 7)
-            {
-                Console.WriteLine("Saturday");
-            }
+                day = "Saturday";
             else
-            {
-                Console.WriteLine("Holiday");
-            }
+                day = "Holiday";
+            // (condition)?<True statement>:<false statement>
+            //tenary operator
+            //day = (num == 1) ? "Sunday" : (num == 2) ? "Monday" : (num == 3) ? "Tuesday" : (num == 4) ? "Wednesday" : (num == 5) ? "Thursday" : (num == 6) ? "Friday" : (num == 7) ? "Saturday" : "Holiday";
+
+            string type = "";
+            if (num == 1 || num == 7)
+                type = "Weekends";
+            else if (num == 2 || num == 3 || num == 4 || num == 5 || num == 6)
+                type = "Weekdays";
+            else
+                type = "N/A";
+
+            Console.WriteLine($"Days = {day} and Type = {type}");
         }
 
         private static void CastingExamples()
