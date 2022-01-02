@@ -11,23 +11,76 @@ namespace ConsoleApp
     {
         public static void Main()
         {
-            //Add();
-            //CastingExamples();
-            //CalculateAge();
-            //ControlStatementExample();
-            //SwitchStatementExample();
-            MultiplicationTable();
+            var res = "n";
+            do
+            {
+                Console.Clear(); //clear the console screen
+                //Add();
+                //CastingExamples();
+                //CalculateAge();
+                //ControlStatementExample();
+                //SwitchStatementExample();
+                //MultiplicationTable();
+                ForEachStatement();
+
+                Console.WriteLine("Do you want to contiue more? (y/n)");
+                res = Console.ReadLine();
+            } while (res.ToLower() == "y");
+            //ToLower() converts all the characters in the text to lower string
+
             Console.ReadLine();
+        }
+
+        private static void ForEachStatement()
+        {
+            Console.WriteLine("Enter any text");
+            string str = Console.ReadLine();
+            var strArr = str.Split(' ');
+
+            Console.WriteLine();
+            Console.WriteLine("==================================");
+            Console.WriteLine("Using foreach statement");
+            foreach (string item in strArr)
+            {
+                var characters = item.ToLower().ToArray();
+                var uppercharacter = characters[0].ToString().ToUpper();
+                characters[0] = Convert.ToChar(uppercharacter);
+                var converted = string.Join("", characters);
+                Console.Write(converted);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("==================================");
+            Console.WriteLine("Using for statement");
+
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                var characters = strArr[i].ToLower().ToArray();
+                var uppercharacter = characters[0].ToString().ToUpper();
+                characters[0] = Convert.ToChar(uppercharacter);
+                var converted = string.Join("", characters);
+                Console.Write(converted);
+                Console.Write(" ");
+            }
+
+            Console.WriteLine();
         }
 
         private static void MultiplicationTable()
         {
             Console.WriteLine("Enter the number");
             var num = Convert.ToInt32(Console.ReadLine());
-            for (int i = 1; i <= 100; i = i + 2)
+            for (int i = 1; i <= 10; i++)
             {
-                Console.WriteLine(i);
-                // Console.WriteLine($"{num} x {i} = {num * i}");
+                //break : breaks the loop
+                //continue : skips the next sequence of statements and continue the loop by increasing the value
+
+                //if (i % 3 == 0)
+                //{
+                //    continue;
+                //}
+                //Console.WriteLine(i);
+                Console.WriteLine($"{num} x {i} = {num * i}");
             }
         }
 
