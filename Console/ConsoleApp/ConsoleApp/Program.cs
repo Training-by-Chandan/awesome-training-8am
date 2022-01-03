@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    internal class Adish
+    public class Adish
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
             var res = "n";
             do
@@ -21,7 +21,8 @@ namespace ConsoleApp
                 //ControlStatementExample();
                 //SwitchStatementExample();
                 //MultiplicationTable();
-                ForEachStatement();
+                //ForEachStatement();
+                ClassExample2();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -29,6 +30,43 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void ClassExample2()
+        {
+            StudentMarks s1 = new StudentMarks();
+            s1.Name = "Mamta";
+            s1.Math = 1000;
+            s1.Science = 700;
+            s1.Computer = 60;
+            Console.WriteLine($"Total : {s1.Total}\nPercentage : {s1.Percentage}\nDivision : {s1.Division}\n\n");
+            s1.Computer = 70;
+            Console.WriteLine($"Total : {s1.Total}\nPercentage : {s1.Percentage}\nDivision : {s1.Division}\n\n");
+        }
+
+        private static void ClassExample()
+        {
+            //class is the blueprint / designs that holds the properties and methods together
+            //objects are the instance of the class
+            Human h1 = new Human();
+            // h1.SetName( "Adish");
+            var name1 = h1.Name1;
+
+            var name2 = h1.Name2;
+            h1.Name2 = "abc";
+
+            var name3 = h1.Name3;
+            // h1.Name3 = "abc";
+
+            h1.LeftHand = new Hand();
+            h1.RightHand = new Hand();
+
+            Human h2 = new Human();
+            //h2.name = "Mamta";
+            h2.LeftHand = new Hand();
+            h2.RightHand = new Hand();
+
+            Human h3 = new Human();
         }
 
         private static void ForEachStatement()
