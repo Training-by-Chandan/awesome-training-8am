@@ -1,10 +1,72 @@
-﻿namespace ConsoleApp
+﻿using System;
+
+namespace ConsoleApp
 {
+    public class Test
+    {
+        private int X;
+
+        public Test(int x)
+        {
+            X = x;
+        }
+
+        public Test()
+        {
+            X = 10;
+        }
+
+        public Test(int x, int y)
+        {
+            X = x + y;
+        }
+
+        //Functions
+        //access modifier (public / private)
+        //return type (void (does not return) / other return types )
+        //function name
+        //parameters
+
+        public void Add()
+        {
+            //statements
+            Console.WriteLine("I am from add function");
+            Console.WriteLine("I am from add function");
+            Console.WriteLine("I am from add function");
+            Sum(5f, 10);
+            Sum(5, 10f);
+            //var t = 10m;
+            //return;
+        }
+
+        //function overloading
+        public int Sum(int x, float y) //1
+        {
+            return x + (int)y;
+        }
+
+        public int Sum(float y, int x) //2
+        {
+            return (int)y + x;
+        }
+
+        public int Sum(int x, int y, int z) => x + y + z;
+
+        public int Sum(int x, int y) => x + y;
+    }
+
     public class Human
     {
         //variables
         //properties
+
         //constructor
+        //special function with
+        //1. No return type
+        //2. Function name is same as that of class name
+        //3. Can be overloaded (parameterless (default), parameterized)
+        //4. Runs only once in a object's lifetime
+
         //functions / methods
         //destructor : not used / IDispoable or Garbage Collector
 

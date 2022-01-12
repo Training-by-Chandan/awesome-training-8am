@@ -22,7 +22,8 @@ namespace ConsoleApp
                 //SwitchStatementExample();
                 //MultiplicationTable();
                 //ForEachStatement();
-                ClassExample2();
+                //ClassExample2();
+                ConstructorExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -30,6 +31,15 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void ConstructorExample()
+        {
+            Test t1 = new Test();
+            Test t2 = new Test(5);
+            Test t3 = new Test(6, 3);
+            t1 = new Test();
+            var sum = t1.Sum(5, 10, 10);
         }
 
         private static void ClassExample2()
