@@ -23,7 +23,9 @@ namespace ConsoleApp
                 //MultiplicationTable();
                 //ForEachStatement();
                 //ClassExample2();
-                ConstructorExample();
+                //ConstructorExample();
+                //OperatorOverloadingExample();
+                IndexersExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -31,6 +33,41 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void IndexersExample()
+        {
+            Days d = new Days();
+            var day = d[0];
+            var index = d["OtherDay"];
+            StudentMarks[] marks = new StudentMarks[4];
+
+            marks[0] = new StudentMarks() { Name = "Satyam", Math = 78, Science = 50, Computer = 67 };
+            marks[1] = new StudentMarks() { Name = "Satyam", Math = 78, Science = 50, Computer = 67 };
+            marks[2] = new StudentMarks() { Name = "Prabi", Math = 75, Science = 70, Computer = 56 };
+            marks[3] = new StudentMarks() { Name = "Prabi", Math = 75, Science = 70, Computer = 56 };
+
+            Marks m = new Marks(marks);
+
+            var result = m["Satyam"];
+            var result1 = m["Prabi"];
+        }
+
+        private static void OperatorOverloadingExample()
+        {
+            //int i = 10;
+            //int j = 20;
+            //int k = i + j;
+            StudentMarks studentMarks1 = new StudentMarks() { Math = 78, Science = 50, Computer = 67 };
+            StudentMarks studentMarks2 = new StudentMarks() { Math = 78, Science = 50, Computer = 67 };
+            StudentMarks studentMarks3 = new StudentMarks() { Math = 75, Science = 70, Computer = 56 };
+            StudentMarks studentMarks4 = new StudentMarks() { Math = 75, Science = 70, Computer = 56 };
+
+            StudentMarks studentMarks = studentMarks1 + studentMarks2 + studentMarks3 + studentMarks4;
+            int i = 10;
+            i++;
+
+            Console.WriteLine(studentMarks1 == studentMarks2);
         }
 
         private static void ConstructorExample()

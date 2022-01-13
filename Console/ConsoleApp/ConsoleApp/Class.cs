@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleApp
 {
@@ -108,7 +109,18 @@ namespace ConsoleApp
 
     public class StudentMarks
     {
+        public StudentMarks()
+        {
+        }
+
+        public StudentMarks(double fullmarks)
+        {
+            _fullmarks = fullmarks;
+        }
+
         public string Name { get; set; }
+        private double _fullmarks = 100;
+        public double Fullmarks => _fullmarks;
 
         //validations
         private double _math;
@@ -125,9 +137,9 @@ namespace ConsoleApp
                 {
                     _math = 0;
                 }
-                else if (value > 100)
+                else if (value > _fullmarks)
                 {
-                    _math = 100;
+                    _math = _fullmarks;
                 }
                 else
                 {
@@ -143,7 +155,7 @@ namespace ConsoleApp
             get { return _science; }
             set
             {
-                _science = value < 0 ? 0 : value > 100 ? 100 : value;
+                _science = value < 0 ? 0 : value > _fullmarks ? _fullmarks : value;
             }
         }
 
@@ -155,7 +167,7 @@ namespace ConsoleApp
             set
             {
                 if (value < 0) _computer = 0;
-                else if (value > 100) _computer = 100;
+                else if (value > _fullmarks) _computer = _fullmarks;
                 else _computer = value;
             }
         }
@@ -201,6 +213,88 @@ namespace ConsoleApp
                     return "Fail";
                 }
             }
+        }
+
+        #region Operator Overloading
+
+        //operator overloading (+, -, * , /)
+        public static StudentMarks operator +(StudentMarks studentMarks1, StudentMarks studentMarks2)
+        {
+            StudentMarks result = new StudentMarks(studentMarks1.Fullmarks + studentMarks2.Fullmarks);
+            result.Math = studentMarks1.Math + studentMarks2.Math;
+            result.Science = studentMarks1.Science + studentMarks2.Science;
+            result.Computer = studentMarks1.Computer + studentMarks2.Computer;
+
+            return result;
+        }
+
+        //increase the marks by 1 for each subject (++,--)
+        public static StudentMarks operator ++(StudentMarks studentMarks)
+        {
+            studentMarks.Math++;
+            studentMarks.Science++;
+            studentMarks.Computer++;
+
+            return studentMarks;
+        }
+
+        public static bool operator >(StudentMarks studentMarks1, StudentMarks studentMarks2)
+        {
+            return studentMarks1.Total > studentMarks2.Total;
+        }
+
+        public static bool operator <(StudentMarks studentMarks1, StudentMarks studentMarks2)
+        {
+            return studentMarks1.Total < studentMarks2.Total;
+        }
+
+        public static bool operator ==(StudentMarks studentMarks1, StudentMarks studentMarks2)
+        {
+            return studentMarks1.Math == studentMarks2.Math && studentMarks1.Science == studentMarks2.Science && studentMarks1.Computer == studentMarks2.Computer;
+        }
+
+        public static bool operator !=(StudentMarks studentMarks1, StudentMarks studentMarks2)
+        {
+            return !(studentMarks1.Math == studentMarks2.Math && studentMarks1.Science == studentMarks2.Science && studentMarks1.Computer == studentMarks2.Computer);
+        }
+
+        #endregion Operator Overloading
+    }
+
+    public class Days
+    {
+        private string[] days = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+        public string this[int i]
+        {
+            get { return days[i]; }
+            set { days[i] = value; }
+        }
+
+        public int this[string day]
+        {
+            get { return days.ToList().IndexOf(day); }
+        }
+    }
+
+    public class Marks
+    {
+        private StudentMarks[] _marks;
+
+        public Marks(StudentMarks[] marks)
+        {
+            this._marks = marks;
+        }
+
+        public StudentMarks this[int i]
+        {
+            get { return _marks[i]; }
+            set { _marks[i] = value; }
+        }
+
+        public StudentMarks[] this[string name]
+        {
+            get { return this._marks.Where(p => p.Name == name).ToArray(); }
         }
     }
 }
