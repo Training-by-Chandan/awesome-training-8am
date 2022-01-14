@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public class Adish
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -25,7 +25,8 @@ namespace ConsoleApp
                 //ClassExample2();
                 //ConstructorExample();
                 //OperatorOverloadingExample();
-                IndexersExample();
+                //IndexersExample();
+                StaticAndNonStaticExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -33,6 +34,27 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void StaticAndNonStaticExample()
+        {
+            IndexersExample();
+            //StaticClass s = new StaticClass();//we cannot do this
+            NonStaticClass nonStatic = new NonStaticClass();
+            NonStaticClass nonStatic1 = new NonStaticClass();
+            NonStaticClass nonStatic2 = new NonStaticClass();
+            //nonStatic.i = 10;
+            //nonStatic.Name = "";
+            nonStatic.SomeMethod();
+            nonStatic1.SomeMethod();
+            nonStatic2.SomeMethod();
+
+            NonStaticClass.staticI = 10;
+            NonStaticClass.StaticName = "";
+            NonStaticClass.SomeStaticMethod();
+
+            StaticClass.i = 10;
+            StaticClass.Name = "Some string";
         }
 
         private static void IndexersExample()
