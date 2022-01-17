@@ -26,7 +26,8 @@ namespace ConsoleApp
                 //ConstructorExample();
                 //OperatorOverloadingExample();
                 //IndexersExample();
-                StaticAndNonStaticExample();
+                //StaticAndNonStaticExample();
+                InheritanceExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -34,6 +35,25 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void InheritanceExample()
+        {
+            LivingThing l1 = new LivingThing();
+            LivingThing a1 = new Animal();
+            LivingThing p1 = new Plant();
+
+            Console.WriteLine("Living thing");
+            l1.Move();
+            Console.WriteLine();
+
+            Console.WriteLine("Animal");
+            a1.Move();
+            Console.WriteLine();
+
+            Console.WriteLine("Plant");
+            p1.Move();
+            Console.WriteLine();
         }
 
         private static void StaticAndNonStaticExample()
