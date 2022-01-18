@@ -6,6 +6,19 @@ namespace ConsoleApp
     {
         protected string _id;
 
+        public LivingThing()
+        {
+        }
+
+        public LivingThing(string id)
+        {
+            _id = id;
+        }
+
+        public LivingThing(int id)
+        {
+        }
+
         public void SomeFunction()
         {
             _id = "Something";
@@ -19,6 +32,19 @@ namespace ConsoleApp
 
     public class Animal : LivingThing
     {
+        //if not mentioned it always calls default constructor (parameterless constructor)
+        public Animal() : base(0)
+        {
+        }
+
+        public Animal(string id) : base(id)
+        {
+        }
+
+        public Animal(int id) : base(id)
+        {
+        }
+
         //animal here is derived class or child class
         //livingthing is base class or parent class
         //important point to remember
@@ -40,9 +66,31 @@ namespace ConsoleApp
 
     public class Plant : LivingThing
     {
+        public Plant() : base(0)
+        {
+        }
+
+        public Plant(string id) : base(id)
+        {
+        }
+
         public override void Move()
         {
             Console.WriteLine("Cannot move");
+        }
+    }
+
+    public class HumanBeing : Animal
+    {
+        public HumanBeing() : base()
+        {
+        }
+    }
+
+    public class SomeHuman : Animal
+    {
+        public SomeHuman(string id) : base(id)
+        {
         }
     }
 }

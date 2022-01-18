@@ -27,7 +27,8 @@ namespace ConsoleApp
                 //OperatorOverloadingExample();
                 //IndexersExample();
                 //StaticAndNonStaticExample();
-                InheritanceExample();
+                //InheritanceExample();
+                InheritanceExampleV2();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -35,6 +36,23 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void InheritanceExampleV2()
+        {
+            //Test t1=new Test();
+            //Test t2=new Test(100);
+            //Test t3=new Test(20,20);
+
+            //LivingThing thing = new LivingThing();
+            LivingThing thing1 = new LivingThing("SomeId");
+
+            Animal a1 = new Animal();
+            Animal a2 = new Animal("someid");
+
+            HumanBeing h1 = new HumanBeing();
+
+            Plant plant1 = new Plant();
         }
 
         private static void InheritanceExample()
