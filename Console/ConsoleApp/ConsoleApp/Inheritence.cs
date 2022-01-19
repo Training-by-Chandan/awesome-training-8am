@@ -33,7 +33,7 @@ namespace ConsoleApp
     public class Animal : LivingThing
     {
         //if not mentioned it always calls default constructor (parameterless constructor)
-        public Animal() : base(0)
+        public Animal()
         {
         }
 
@@ -87,10 +87,18 @@ namespace ConsoleApp
         }
     }
 
-    public class SomeHuman : Animal
+    public class SomeHuman : Animal, IA, IB
     {
         public SomeHuman(string id) : base(id)
         {
         }
+    }
+
+    public interface IA
+    {
+    }
+
+    public interface IB
+    {
     }
 }

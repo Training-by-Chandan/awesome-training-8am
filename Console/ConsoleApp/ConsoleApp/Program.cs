@@ -28,7 +28,9 @@ namespace ConsoleApp
                 //IndexersExample();
                 //StaticAndNonStaticExample();
                 //InheritanceExample();
-                InheritanceExampleV2();
+                //InheritanceExampleV2();
+                //InterfaceExample();
+                InterfaceExampleV2();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -36,6 +38,53 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void InterfaceExampleV2()
+        {
+            Console.WriteLine("Enter the choice");
+            var choice = Console.ReadLine();
+
+            var shape = GetShape(choice);
+            shape.GetInput();
+            shape.Area();
+            shape.Perimeter();
+        }
+
+        private static IShape GetShape(string choice)
+        {
+            if (choice == "1")
+            {
+                return new Rectangle();
+            }
+            else if (choice == "2")
+            {
+                return new Circle();
+            }
+            else
+            {
+                return new Square();
+            }
+        }
+
+        private static void InterfaceExample()
+        {
+            ConsoleApp[] consoles = new ConsoleApp[10];
+            consoles[0] = new ConsoleApp();
+            consoles[1] = new ConsoleApp();
+
+            TestClass[] testClasses = new TestClass[10];
+            testClasses[0] = new TestClass();
+            testClasses[1] = new TestClass();
+
+            //IConsoleApp c=new IConsoleApp(); // this is not valid
+
+            IConsoleApp[] consoleApps = new IConsoleApp[10];
+            consoleApps[0] = new ConsoleApp();
+            consoleApps[1] = new TestClass();
+            consoleApps[2] = new NewClass();
+
+            IConsoleApp consoleApps2 = new TestClass();
         }
 
         private static void InheritanceExampleV2()
