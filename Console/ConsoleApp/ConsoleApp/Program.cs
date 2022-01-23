@@ -31,7 +31,8 @@ namespace ConsoleApp
                 //InheritanceExample();
                 //InheritanceExampleV2();
                 //InterfaceExample();
-                InterfaceExampleV2();
+                //InterfaceExampleV2();
+                AbstractExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -39,6 +40,36 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+        private static void AbstractExample()
+        {
+            //ShapeAbs s = new ShapeAbs();// we cannot create the object of abstract class
+            Console.WriteLine("Enter the choice");
+            var shape = GetShapeAbs(Console.ReadLine());
+
+            if (shape!=null)
+            {
+                shape.GetInput();
+                shape.Area();
+                shape.Perimeter();
+            }
+
+        }
+
+        static ShapeAbs GetShapeAbs(string choice)
+        {
+            if (choice =="1")
+            {
+                return new SquareAbs();
+            }
+            else if (choice=="2")
+            {
+                return new RectangleAbs();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private static void InterfaceExampleV2()
