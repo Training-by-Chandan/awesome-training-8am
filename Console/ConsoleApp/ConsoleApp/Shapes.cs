@@ -82,4 +82,22 @@ namespace ConsoleApp
             Console.WriteLine(perimeter);
         }
     }
+
+    public class Triangle : IShape
+    {
+        public void Area()
+        {
+           // throw new NotImplementedException();
+        }
+
+        public void GetInput()
+        {
+           // throw new NotImplementedException();
+        }
+
+        public void Perimeter()
+        {
+            //throw new NotImplementedException();
+        }
+    }
 }

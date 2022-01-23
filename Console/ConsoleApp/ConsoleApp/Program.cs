@@ -12,6 +12,7 @@ namespace ConsoleApp
         public static void Main(string[] args)
         {
             var res = "n";
+            int x = 100;
             do
             {
                 Console.Clear(); //clear the console screen
@@ -61,6 +62,8 @@ namespace ConsoleApp
             {
                 return new Circle();
             }
+            else if (choice =="3")
+                return new Triangle();
             else
             {
                 return new Square();
