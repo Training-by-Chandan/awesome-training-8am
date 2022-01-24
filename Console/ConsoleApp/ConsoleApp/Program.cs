@@ -32,7 +32,8 @@ namespace ConsoleApp
                 //InheritanceExampleV2();
                 //InterfaceExample();
                 //InterfaceExampleV2();
-                AbstractExample();
+                //AbstractExample();
+                CustomStackImplementation();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -41,6 +42,41 @@ namespace ConsoleApp
 
             Console.ReadLine();
         }
+
+        static void CustomStackImplementation()
+        {
+            CustomStackV2 cs =new CustomStackV2();
+            cs.Push(20);
+            cs.Push(25);
+            Console.WriteLine("After pushing 2 items");
+            cs.DisplayAll();
+            Console.WriteLine();
+
+            cs.Pop();
+            Console.WriteLine("After poping");
+            cs.DisplayAll();
+            Console.WriteLine();
+
+            cs.Push(30);
+            cs.Push(35);
+            cs.Push(40);
+            cs.Push(45);
+            cs.Push(50);
+            Console.WriteLine("After pushing 5 items");
+            cs.DisplayAll();
+            Console.WriteLine();
+
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            Console.WriteLine("After poping");
+            cs.DisplayAll();
+            Console.WriteLine();
+        }
+
         private static void AbstractExample()
         {
             //ShapeAbs s = new ShapeAbs();// we cannot create the object of abstract class
