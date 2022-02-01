@@ -33,7 +33,8 @@ namespace ConsoleApp
                 //InterfaceExample();
                 //InterfaceExampleV2();
                 //AbstractExample();
-                CustomStackImplementation();
+                //CustomStackImplementation();
+                CustomQueueImplementation();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -43,9 +44,39 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
-        static void CustomStackImplementation()
+        private static void CustomQueueImplementation()
         {
-            CustomStackV2 cs =new CustomStackV2();
+            CustomQueueV2 cq = new CustomQueueV2();
+            cq.Enqueue(10);
+            cq.Enqueue(20);
+            cq.Enqueue(15);
+            cq.DisplayAll();
+            cq.Dequeue();
+            cq.DisplayAll();
+
+            cq.Enqueue(30);
+            cq.Enqueue(20);
+            cq.Enqueue(32);
+            cq.Enqueue(31); //this shouldn't go
+            cq.Enqueue(31); //this shouldn't go
+            cq.Enqueue(34); //this shouldn't go
+            cq.Enqueue(32); //this shouldn't go
+            cq.Enqueue(315234); //this shouldn't go
+            cq.Enqueue(23541); //this shouldn't go
+            cq.Enqueue(32345); //this shouldn't go
+            cq.DisplayAll();
+            cq.Dequeue();
+            cq.Dequeue();
+            cq.Dequeue();
+            cq.Dequeue();
+            cq.Dequeue();
+            cq.Dequeue();
+            cq.DisplayAll();
+        }
+
+        private static void CustomStackImplementation()
+        {
+            CustomStackV2 cs = new CustomStackV2();
             cs.Push(20);
             cs.Push(25);
             Console.WriteLine("After pushing 2 items");
@@ -83,22 +114,21 @@ namespace ConsoleApp
             Console.WriteLine("Enter the choice");
             var shape = GetShapeAbs(Console.ReadLine());
 
-            if (shape!=null)
+            if (shape != null)
             {
                 shape.GetInput();
                 shape.Area();
                 shape.Perimeter();
             }
-
         }
 
-        static ShapeAbs GetShapeAbs(string choice)
+        private static ShapeAbs GetShapeAbs(string choice)
         {
-            if (choice =="1")
+            if (choice == "1")
             {
                 return new SquareAbs();
             }
-            else if (choice=="2")
+            else if (choice == "2")
             {
                 return new RectangleAbs();
             }
@@ -129,7 +159,7 @@ namespace ConsoleApp
             {
                 return new Circle();
             }
-            else if (choice =="3")
+            else if (choice == "3")
                 return new Triangle();
             else
             {
