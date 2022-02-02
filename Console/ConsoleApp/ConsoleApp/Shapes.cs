@@ -34,7 +34,7 @@ namespace ConsoleApp
         }
     }
 
-    public class Rectangle : IShape
+    public class Rectangle : IShape, IRectangle
     {
         private double _length;
         private double _breadth;
@@ -87,12 +87,12 @@ namespace ConsoleApp
     {
         public void Area()
         {
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         public void GetInput()
         {
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         public void Perimeter()

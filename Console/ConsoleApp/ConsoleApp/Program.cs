@@ -34,7 +34,8 @@ namespace ConsoleApp
                 //InterfaceExampleV2();
                 //AbstractExample();
                 //CustomStackImplementation();
-                CustomQueueImplementation();
+                //CustomQueueImplementation();
+                TemplatedCustomStack();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -44,9 +45,34 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
+        private static void TemplatedCustomStack()
+        {
+            //CustomStackV2Templated<int> stackInt=new CustomStackV2Templated<int>();
+            //CustomStackV2Templated<string> stackString=new CustomStackV2Templated<string>();
+            //stackInt.Push(1);
+            //stackString.Push("ABC");
+
+            //CustomStackV2Templated<IShape> stackShape = new CustomStackV2Templated<IShape>();
+            //stackShape.Push(new Rectangle());
+            //stackShape.Push(new Square());
+            //stackShape.Push(new Circle());
+
+            CustomStackV2Templated<Rectangle> stackRectangle = new CustomStackV2Templated<Rectangle>();
+            stackRectangle.Push(new Rectangle());
+            stackRectangle.Push(new Rectangle());
+            stackRectangle.Push(new Rectangle());
+
+            CustomStackV2Templated<RectangleAbs> stackRectangleAbs = new CustomStackV2Templated<RectangleAbs>();
+
+            Templated<Rectangle, SquareAbs, int, string> templatedObj = new Templated<Rectangle, SquareAbs, int, string>();
+        }
+
         private static void CustomQueueImplementation()
         {
-            CustomQueueV2 cq = new CustomQueueV2();
+            NewClass c = new NewClass();
+            c.Name = "Chandan";
+
+            CustomQueueV2<int> cq = new CustomQueueV2<int>();
             cq.Enqueue(10);
             cq.Enqueue(20);
             cq.Enqueue(15);

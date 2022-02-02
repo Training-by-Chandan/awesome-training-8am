@@ -74,11 +74,11 @@ namespace ConsoleApp
         }
     }
 
-    public class CustomQueueV2
+    public class CustomQueueV2<T>
     {
-        private int[] _container = new int[0];
+        private T[] _container = new T[0];
 
-        public void Enqueue(int item)
+        public void Enqueue(T item)
         {
             Array.Resize(ref _container, _container.Length + 1);
 

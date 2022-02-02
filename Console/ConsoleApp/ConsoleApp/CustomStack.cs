@@ -79,4 +79,33 @@ namespace ConsoleApp
             }
         }
     }
+
+    public class CustomStackV2Templated<T> where T : IRectangle
+
+    {
+        //Array -> container
+        private T[] _container = new T[0];
+
+        //Push() -> function Push(1), Push(10), Push(5)
+        public void Push(T item)
+        {
+            Array.Resize(ref _container, _container.Length + 1);
+            _container[_container.Length - 1] = item;
+        }
+
+        //Pop() -> function exit the top most item
+        public void Pop()
+        {
+            Array.Resize(ref _container, _container.Length - 1);
+        }
+
+        //DisplayAll() -> function
+        public void DisplayAll()
+        {
+            for (int i = _container.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(_container[i]);
+            }
+        }
+    }
 }

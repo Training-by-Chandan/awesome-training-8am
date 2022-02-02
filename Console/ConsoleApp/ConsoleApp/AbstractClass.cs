@@ -11,29 +11,33 @@ namespace ConsoleApp
     {
         protected double area;
         protected double perimeter;
+
         public void Area()
         {
             Console.WriteLine($"Area : {area}");
         }
+
         private void _somePrivatFunction()
         {
-
         }
+
         protected void someProtectedFunction()
         {
-
         }
+
         public void Perimeter()
         {
             Console.WriteLine($"Perimeter : {perimeter}");
         }
-        public abstract void GetInput();     
+
+        public abstract void GetInput();
     }
 
-    public class RectangleAbs : ShapeAbs
+    public class RectangleAbs : ShapeAbs, IRectangle
     {
         private double _length;
         private double _breadth;
+
         public override void GetInput()
         {
             Console.WriteLine("Enter the Length");
@@ -45,9 +49,11 @@ namespace ConsoleApp
             perimeter = 2 * (_length + _breadth);
         }
     }
+
     public class SquareAbs : ShapeAbs
     {
         private double _length;
+
         public override void GetInput()
         {
             Console.WriteLine("Enter the Length");
@@ -57,5 +63,4 @@ namespace ConsoleApp
             perimeter = 4 * _length;
         }
     }
-
 }

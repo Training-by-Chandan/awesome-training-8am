@@ -1,5 +1,9 @@
 ﻿namespace ConsoleApp
 {
+    public interface IRectangle
+    {
+    }
+
     public interface IConsoleApp
     {
         // no constructor
