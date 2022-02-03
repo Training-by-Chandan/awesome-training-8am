@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
     <Compile Include="Class.cs" />
+    <Compile Include="Collections.cs" />
     <Compile Include="CustomQueue.cs" />
     <Compile Include="CustomStack.cs" />
     <Compile Include="Inheritence.cs" />
@@ -58,12 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryVb\ClassLibraryVb.vbproj">
-      <Project>{725890e6-e8eb-49fd-b3d0-436f17c50ead}</Project>
-      <Name>ClassLibraryVb</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

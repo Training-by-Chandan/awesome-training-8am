@@ -35,7 +35,9 @@ namespace ConsoleApp
                 //AbstractExample();
                 //CustomStackImplementation();
                 //CustomQueueImplementation();
-                TemplatedCustomStack();
+                //TemplatedCustomStack();
+                //NonGenericColelctionExample();
+                GenericCollectionExamples();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -43,6 +45,19 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void GenericCollectionExamples()
+        {
+            GenericCollections.HashSetExample();
+            GenericCollections.DictionaryExample();
+            GenericCollections.ListExample();
+        }
+
+        private static void NonGenericColelctionExample()
+        {
+            NonGenericCollection.ArrayListExample();
+            NonGenericCollection.SortedListExample();
         }
 
         private static void TemplatedCustomStack()
