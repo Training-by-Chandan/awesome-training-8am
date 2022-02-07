@@ -37,7 +37,8 @@ namespace ConsoleApp
                 //CustomQueueImplementation();
                 //TemplatedCustomStack();
                 //NonGenericColelctionExample();
-                GenericCollectionExamples();
+                //GenericCollectionExamples();
+                PassbyExamples();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -45,6 +46,30 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void PassbyExamples()
+        {
+            int i = 10;
+            int j = 20;
+            Console.WriteLine($"i => {i}, j => {j}");
+            Console.WriteLine("Using Pass by value");
+            Passby.PassbyValue(i, j);
+            //Passby.PassbyValue(10, 20);
+            Console.WriteLine($"i => {i}, j => {j}");
+
+            Console.WriteLine("\n\nUsing Pass by reference");
+            Passby.PassbyReference(ref i, ref j);
+            //Passby.PassbyReference(address of i, address of j);
+            Console.WriteLine($"i => {i}, j => {j}");
+
+            Console.WriteLine("\n\nUsing Out");
+            int res = 0;
+            Passby.PassOut(i, j, out res);
+            //Passby.PassbyReference(address of i, address of j);
+            Console.WriteLine($"i => {i}, j => {j}, res = {res}");
+
+            Passby.DefaultParameters(s: "abc", i: 20);
         }
 
         private static void GenericCollectionExamples()
