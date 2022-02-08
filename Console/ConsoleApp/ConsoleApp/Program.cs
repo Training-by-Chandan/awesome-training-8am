@@ -38,7 +38,8 @@ namespace ConsoleApp
                 //TemplatedCustomStack();
                 //NonGenericColelctionExample();
                 //GenericCollectionExamples();
-                PassbyExamples();
+                //PassbyExamples();
+                DelegateImplementation();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -47,6 +48,25 @@ namespace ConsoleApp
 
             Console.ReadLine();
         }
+
+        private static void DelegateImplementation()
+        {
+            Delegates d = new Delegates();
+            d.MathEvent += MethodOne;
+            d.MathEvent += MethodTwo;
+            d.ReactToEvent(10, 20);
+//            d.Implementation();
+        }
+       
+        static void MethodOne(int p, int q)
+        {
+
+        }
+        static void MethodTwo(int p, int q)
+        {
+
+        }
+
 
         private static void PassbyExamples()
         {
