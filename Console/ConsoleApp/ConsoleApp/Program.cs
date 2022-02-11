@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp
@@ -39,7 +40,10 @@ namespace ConsoleApp
                 //NonGenericColelctionExample();
                 //GenericCollectionExamples();
                 //PassbyExamples();
-                DelegateImplementation();
+                //DelegateImplementation();
+                //ThreadingExample();
+                //TaskExample();
+                MultipleTask();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -49,24 +53,141 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
+        public static void MultipleTask()
+        {
+            var list = new List<Task>();
+            list.Add(new Task(() => { TestFunction(10, ConsoleColor.Red, 500); }));
+            list.Add(new Task(() => { TestFunction(20, ConsoleColor.Green, 1000); }));
+            list.Add(new Task(() => { TestFunction(15, ConsoleColor.Blue, 1250); }));
+            list.Add(new Task(() => { TestFunction(30, ConsoleColor.Yellow, 1500); }));
+
+            var res = Parallel.ForEach(list, t => t.Start());
+        }
+
+        private static void TestFunction(int loops, ConsoleColor color, int delay)
+        {
+            for (int i = 0; i < loops; i++)
+            {
+                Thread.Sleep(delay);
+                Console.ForegroundColor = color;
+                Console.WriteLine("Test function Called");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        private static void TaskExample()
+        {
+            CancellationTokenSource tokenSource = new CancellationTokenSource();
+            Task.Run(() =>
+            {
+                FunctionTwo(tokenSource.Token);
+            }).ContinueWith((t) =>
+            {
+                FunctionThree();
+            }, TaskContinuationOptions.OnlyOnRanToCompletion).ContinueWith((t) =>
+            {
+                FunctionOne(5, 2, tokenSource.Token);
+            });
+            //t2.Start();
+
+            var t1 = Task.Factory.StartNew(() =>
+            {
+                FunctionOne(20, 1, tokenSource.Token);
+            });
+
+            //tokenSource.CancelAfter(5000);
+            // Task.Run(() => FunctionTwo()).ContinueWith(a => { FunctionThree(); }, TaskContinuationOptions.OnlyOnRanToCompletion);
+
+            // t1.Start();
+            //t2.Start();
+
+            var res = Task.Run<int>(() =>
+            {
+                Console.WriteLine("I am anonymous function");
+                return 20;
+            });
+
+            Console.WriteLine($"anonymous function returned {res.Result}");
+        }
+
+        private static void ThreadingExample()
+        {
+            //FunctionOne();
+            //FunctionTwo();
+
+            //Thread t1 = new Thread(() => FunctionOne(20));
+            //Thread t2 = new Thread(FunctionTwo);
+
+            //t1.Start();
+            //t2.Start();
+        }
+
+        private static int FunctionOne(int x, int functionNumber, CancellationToken token)
+        {
+            try
+            {
+                for (int i = 0; i < x; i++)
+                {
+                    Thread.Sleep(500);
+                    token.ThrowIfCancellationRequested();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"FunctionNumber {functionNumber} => Iteration {i}, datetime => {DateTime.Now}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("task has been cancelled");
+            }
+            return 50;
+        }
+
+        private static void FunctionTwo(CancellationToken token)
+        {
+            try
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    token.ThrowIfCancellationRequested();
+                    Thread.Sleep(1500);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"FunctionTwo => Iteration {i}, datetime => {DateTime.Now}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Task has been cancelled");
+            }
+        }
+
+        private static void FunctionThree()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(1000);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"FunctionThree => Iteration {i}, datetime => {DateTime.Now}");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
         private static void DelegateImplementation()
         {
             Delegates d = new Delegates();
             d.MathEvent += MethodOne;
             d.MathEvent += MethodTwo;
             d.ReactToEvent(10, 20);
-//            d.Implementation();
+            //            d.Implementation();
         }
-       
-        static void MethodOne(int p, int q)
+
+        private static void MethodOne(int p, int q)
         {
-
         }
-        static void MethodTwo(int p, int q)
+
+        private static void MethodTwo(int p, int q)
         {
-
         }
-
 
         private static void PassbyExamples()
         {
