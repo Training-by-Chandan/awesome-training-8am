@@ -297,4 +297,71 @@ namespace ConsoleApp
             get { return this._marks.Where(p => p.Name == name).ToArray(); }
         }
     }
+
+    public class SomeClass
+    {
+        public static void FunctionOne()
+        {
+            var arr = new string[2];
+            arr[0] = "Content One";
+            arr[1] = "Content Two";
+            arr[2] = "Content Three";
+        }
+
+        public static void FunctionTwo()
+        {
+            FunctionOne();
+        }
+
+        public static void FunctionThree(int i, int j)
+        {
+            if (i == 0)
+            {
+                throw new ZeroException("You cannot pass 0");
+            }
+            else if (i == 5)
+            {
+                throw new Exception("Cannot pass 5");
+            }
+            var res = i + j;
+        }
+    }
+
+    [Serializable]
+    public class TempException : Exception
+    {
+        public TempException()
+        { }
+
+        public TempException(string message) : base(message)
+        {
+        }
+
+        public TempException(string message, Exception inner) : base(message, inner)
+        {
+        }
+
+        protected TempException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+    }
+
+    [Serializable]
+    public class ZeroException : Exception
+    {
+        public ZeroException()
+        { }
+
+        public ZeroException(string message) : base(message)
+        {
+        }
+
+        public ZeroException(string message, Exception inner) : base(message, inner)
+        {
+        }
+
+        protected ZeroException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+    }
 }

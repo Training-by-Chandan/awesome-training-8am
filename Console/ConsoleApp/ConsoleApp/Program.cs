@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ConsoleApp
 {
@@ -43,7 +44,9 @@ namespace ConsoleApp
                 //DelegateImplementation();
                 //ThreadingExample();
                 //TaskExample();
-                MultipleTask();
+                //MultipleTask();
+                //AsyncAwaitExample();
+                ExceptionExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -51,6 +54,68 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        //exception handling
+        private static void ExceptionExample()
+        {
+            try
+            {
+                Console.WriteLine("Enter the number");
+                var input = Convert.ToInt32(Console.ReadLine());
+                SomeClass.FunctionThree(input, 10);
+                Console.WriteLine("Everything worked good");
+            }
+            catch (FormatException fex)
+            {
+                Console.WriteLine("Format not ok");
+            }
+            catch (ZeroException zex)
+            {
+                Console.WriteLine("Caught ZeroException");
+                Console.WriteLine(zex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        //async => task, noraml
+        //async => if we want to return, Task<return type>, as a void we use Task
+        public static async void AsyncAwaitExample()
+        {
+            TaskOne();
+            TaskTwo();
+            var res = TaskReturningInt();
+        }
+
+        private static async Task<int> TaskReturningInt()
+        {
+            await Task.Delay(1000);
+            return 10;
+        }
+
+        private static async Task TaskOne()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                await Task.Delay(500);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("From Task One");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        private static async Task TaskTwo()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                await Task.Delay(1500);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("From Task Two");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
 
         public static void MultipleTask()
