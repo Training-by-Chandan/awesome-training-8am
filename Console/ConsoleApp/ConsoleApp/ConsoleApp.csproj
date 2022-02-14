@@ -51,6 +51,7 @@
     <Compile Include="CustomQueue.cs" />
     <Compile Include="CustomStack.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="Enum.cs" />
     <Compile Include="Inheritence.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="Passby.cs" />

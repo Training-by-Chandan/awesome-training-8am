@@ -46,7 +46,8 @@ namespace ConsoleApp
                 //TaskExample();
                 //MultipleTask();
                 //AsyncAwaitExample();
-                ExceptionExample();
+                //ExceptionExample();
+                EnumsExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -54,6 +55,42 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void EnumsExample()
+        {
+            var t = (DaysOfWeek)1;
+            var day = DaysOfWeek.Monday;
+            Console.WriteLine($"String Equivalent =< {day.ToString()}");
+            Console.WriteLine($"Number Equivalent =< {(int)day}");
+            //var d = (DaysOfWeek)"Sunday"; // not possible
+
+            switch (t)
+            {
+                case DaysOfWeek.Tuesday:
+                    break;
+
+                case DaysOfWeek.Monday:
+                    break;
+
+                case DaysOfWeek.Sunday:
+                    break;
+
+                case DaysOfWeek.Wednesday:
+                    break;
+
+                case DaysOfWeek.Thursday:
+                    break;
+
+                case DaysOfWeek.Friday:
+                    break;
+
+                case DaysOfWeek.Saturday:
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         //exception handling
