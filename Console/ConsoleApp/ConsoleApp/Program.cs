@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -47,7 +48,8 @@ namespace ConsoleApp
                 //MultipleTask();
                 //AsyncAwaitExample();
                 //ExceptionExample();
-                EnumsExample();
+                //EnumsExample();
+                FileHandlingExample();
 
                 Console.WriteLine("Do you want to contiue more? (y/n)");
                 res = Console.ReadLine();
@@ -55,6 +57,64 @@ namespace ConsoleApp
             //ToLower() converts all the characters in the text to lower string
 
             Console.ReadLine();
+        }
+
+        private static void FileHandlingExample()
+        {
+            //File, Directory, Path
+            // System.Diagnostics.Process.Start(@"winword");
+            string path = "d:\\Projects";
+            string fileDetails = "d:\\projects_info.txt";
+            StringBuilder sb = new StringBuilder();
+            if (Directory.Exists(path))
+            {
+                Console.WriteLine("Directory found");
+            }
+            else
+            {
+                Console.WriteLine("Directory Not found");
+                Directory.CreateDirectory(path);
+            }
+            sb.AppendLine("\n\nFolderDetails Details");
+            var listDirectory = Directory.GetDirectories(path);
+            foreach (var item in listDirectory)
+            {
+                sb.AppendLine(item);
+            }
+            var fielist = Directory.GetFiles(path);
+            sb.AppendLine("\n\nFile Details");
+            foreach (var item in fielist)
+            {
+                sb.AppendLine(item);
+            }
+
+            var fileExist = File.Exists(fileDetails);
+            if (!fileExist)
+            {
+                File.WriteAllText(fileDetails, sb.ToString());
+            }
+            else
+            {
+                File.AppendAllText(fileDetails, sb.ToString());
+            }
+            //var d = new DirectoryInfo(path);
+            //Console.WriteLine(d.Name);
+            //Console.WriteLine(d.LastWriteTime);
+            //var f = new FileInfo(path + "\\a.txt");
+            //var t = File.OpenText(path + "\\a.txt");
+            //Console.WriteLine(t.ReadToEnd());
+            //t.Close();
+
+            //var input = Console.ReadLine();
+            //File.AppendAllText(path + "\\a.txt", input);
+
+            //path
+            string filePath = Path.ChangeExtension("d:\\testingFolder\\a.txt", "abc");
+            path = "d:\\testingFolder\\a.txt";
+            var file = Path.GetFileName(path);
+            var fileLocation = Path.GetDirectoryName(path);
+            var extension = Path.GetExtension(path);
+            Console.WriteLine();
         }
 
         private static void EnumsExample()
