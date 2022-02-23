@@ -1,0 +1,80 @@
+--stored proc
+	--DML Statements can be executed (Data Manipulation Language) -it does create, update and delete
+	--may or maynot return data, tables, multple tables
+	--A functions can be used inside a stored proc
+	-- execute command is used (EXEC)
+
+--Functions (scalar valued and table valued)
+	--DML Statement cannot be executed 
+	--Must return a single value in Scalar valued Function and must return table in table valued function
+	--a stored proc cannot run inside a function
+	-- can be run directly in select statements
+
+--A VARIBALES IN SQL STARTS WITH @
+DECLARE @NAME NVARCHAR(20)='CHANDAN'
+SELECT @NAME
+SET @NAME='BROADWAY'
+SELECT @NAME
+PRINT @NAME
+
+
+ --STORED PROCEDURE
+ALTER PROCEDURE SP_CREATE_STUDENT_PARENT @STUDENTNAME NVARCHAR(100), @FATHERNAME NVARCHAR(100), @MOTHERNAME NVARCHAR(100)
+AS
+BEGIN
+	--IF ISNULL(@STUDENTNAME,'') = '' OR ISNULL(@FATHERNAME,'') = '' OR ISNULL(@MOTHERNAME,'') = ''
+	--BEGIN
+	--	PRINT 'EITHER OF THE PARAMETER PASSED IS NULL, CHECK THE VALUE AND TRY AGAIN'
+	--END
+	--ELSE 
+	--BEGIN
+	BEGIN TRANSACTION T1;
+	BEGIN TRY
+		DECLARE @STUDENTID INT
+		DECLARE @FATHERID INT
+		DECLARE @MOTHERID INT
+	
+		INSERT INTO student (NAME) VALUES (@STUDENTNAME)
+		SET @STUDENTID = SCOPE_IDENTITY()
+
+		INSERT INTO parent (parentname, parenttype) VALUES (@FATHERNAME, 0)
+		SET @FATHERID = SCOPE_IDENTITY()
+
+		INSERT INTO parent (parentname, parenttype) VALUES (@MOTHERNAME, 1)
+		SET @MOTHERID = SCOPE_IDENTITY()
+
+		INSERT INTO studentparent (studentid, parentid) VALUES (@STUDENTID, @FATHERID)
+		INSERT INTO studentparent (studentid, parentid) VALUES (@STUDENTID, @MOTHERID)
+		COMMIT TRANSACTION T1;
+	END TRY
+	BEGIN CATCH
+		PRINT 'SOME ERROR OCCURRED'
+		ROLLBACK TRANSACTION T1;
+	END CATCH
+
+		
+	--END
+
+END 
+
+--STORED PROCEDURE IMPLEMENTATION 
+EXEC SP_CREATE_STUDENT_PARENT 'Mary3', 'MARY''S FATHER', 'Mary3''s Mother'
+
+--FUNCTIONS
+--SCALAR VALUED FUNCTION 
+ALTER FUNCTION NAME_VALIDATE(@NAME NVARCHAR(50)) RETURNS BIT
+AS 
+BEGIN
+	DECLARE @RET BIT = 0 -- DECLARE AND SET THE DEFAULT VALUE (INT I=0;)
+	IF @NAME LIKE '%[^A-Z ]%' -- CHECK THE CONDITION IF THE NAME CONTAINS OTHER THAN A-Z AND SPACE
+		SET @RET = 0
+	ELSE
+		SET @RET = 1
+
+RETURN @RET
+END
+
+--SCALAR VALUED FUNCTION IMPLEMENTATION
+SELECT DBO.NAME_VALIDATE('CHANDAN1')
+
+SELECT ID, NAME , DBO.NAME_VALIDATE(NAME) AS VALID FROM STUDENT 
