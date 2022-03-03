@@ -59,6 +59,10 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
+        private static void PhoneNumberValidation()
+        {
+        }
+
         private static void FileHandlingExample()
         {
             //File, Directory, Path
