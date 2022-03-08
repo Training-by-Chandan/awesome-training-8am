@@ -127,6 +127,7 @@ warning 6002: The table/view 'TEST.dbo.vw_studentInfo' does not have a primary k
           <Parameter Name="FATHERNAME" Type="nvarchar" Mode="In" />
           <Parameter Name="MOTHERNAME" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_studentParent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TESTModelStoreContainer">
           <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -270,6 +271,7 @@ warning 6002: The table/view 'TEST.dbo.vw_studentInfo' does not have a primary k
             <Parameter Name="FATHERNAME" Mode="In" Type="String" />
             <Parameter Name="MOTHERNAME" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_studentParent" ReturnType="Collection(TESTModel.sp_studentParent_Result)" />
         </EntityContainer>
         <EntityType Name="vw_studentInfo">
           <Key>
@@ -283,6 +285,12 @@ warning 6002: The table/view 'TEST.dbo.vw_studentInfo' does not have a primary k
           <Property Name="FatherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MotherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="sp_studentParent_Result">
+          <Property Type="Int32" Name="studentid" Nullable="false" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FatherName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MotherName" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -411,6 +419,16 @@ warning 6002: The table/view 'TEST.dbo.vw_studentInfo' does not have a primary k
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_CREATE_STUDENT_PARENT" FunctionName="TESTModel.Store.SP_CREATE_STUDENT_PARENT" />
+          <FunctionImportMapping FunctionImportName="sp_studentParent" FunctionName="TESTModel.Store.sp_studentParent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TESTModel.sp_studentParent_Result">
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

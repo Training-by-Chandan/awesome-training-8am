@@ -70,6 +70,9 @@
     <Compile Include="DB\parent.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\sp_studentParent_Result.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\vw_studentInfo.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>

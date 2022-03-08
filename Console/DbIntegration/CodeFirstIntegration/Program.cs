@@ -1,13 +1,13 @@
-﻿using EFIntegration.DB;
+﻿using CodeFirstIntegration.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFIntegration
+namespace CodeFirstIntegration
 {
-    public class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
@@ -52,14 +52,14 @@ namespace EFIntegration
 
     public class DBs
     {
-        private TESTEntities db = new TESTEntities();
+        private ConsoleContext db = new ConsoleContext();
 
         internal void ReadDataById()
         {
             Console.WriteLine("Enter the Id");
             var id = Convert.ToInt32(Console.ReadLine());
 
-            var existing = db.SomeTables.Find(id);
+            var existing = db.Students.Find(id);
 
             if (existing == null)
             {
@@ -67,7 +67,7 @@ namespace EFIntegration
             }
             else
             {
-                Console.WriteLine($"{existing.id}. {existing.fname} {existing.lname} {existing.email}");
+                Console.WriteLine($"{existing.id}. {existing.Name} {existing.Email} {existing.PhoneNumber}");
                 Console.WriteLine("=========================================\n");
             }
         }
@@ -77,25 +77,25 @@ namespace EFIntegration
             Console.WriteLine("Enter the Id");
             var id = Convert.ToInt32(Console.ReadLine());
 
-            var existing = db.SomeTables.Find(id);
+            var existing = db.Students.Find(id);
             if (existing == null)
             {
                 Console.WriteLine("Record Not found");
             }
             else
             {
-                db.SomeTables.Remove(existing);
+                db.Students.Remove(existing);
                 db.SaveChanges();
             }
         }
 
         internal void ReadDataFromSomeTable()
         {
-            var data = db.SomeTables.ToList();
+            var data = db.Students.ToList();
 
             foreach (var item in data)
             {
-                Console.WriteLine($"{item.id}. {item.fname} {item.lname} {item.email}");
+                Console.WriteLine($"{item.id}. {item.Name} {item.Email} {item.PhoneNumber}");
                 Console.WriteLine("=========================================\n");
             }
         }
@@ -105,19 +105,19 @@ namespace EFIntegration
             Console.WriteLine("Enter the Id");
             var id = Convert.ToInt32(Console.ReadLine());
 
-            var existing = db.SomeTables.Find(id);
+            var existing = db.Students.Find(id);
             if (existing == null)
             {
                 Console.WriteLine("Record Not found");
             }
             else
             {
-                Console.WriteLine("Enter the first name");
-                existing.fname = Console.ReadLine();
-                Console.WriteLine("Enter the last name");
-                existing.lname = Console.ReadLine();
+                Console.WriteLine("Enter the Name");
+                existing.Name = Console.ReadLine();
                 Console.WriteLine("Enter the Email");
-                existing.email = Console.ReadLine();
+                existing.Email = Console.ReadLine();
+                Console.WriteLine("Enter the Phone Number");
+                existing.PhoneNumber = Console.ReadLine();
 
                 db.Entry(existing).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
@@ -126,51 +126,16 @@ namespace EFIntegration
 
         internal void WriteDatatoSomeTable()
         {
-            var someTbl = new SomeTable();
-            Console.WriteLine("Enter the first name");
-            someTbl.fname = Console.ReadLine();
-            Console.WriteLine("Enter the last name");
-            someTbl.lname = Console.ReadLine();
-            Console.WriteLine("Enter the email");
-            someTbl.email = Console.ReadLine();
+            var someTbl = new Student();
+            Console.WriteLine("Enter the name");
+            someTbl.Name = Console.ReadLine();
+            Console.WriteLine("Enter the Email");
+            someTbl.Email = Console.ReadLine();
+            Console.WriteLine("Enter the Phone Number");
+            someTbl.PhoneNumber = Console.ReadLine();
 
-            db.SomeTables.Add(someTbl);
+            db.Students.Add(someTbl);
             db.SaveChanges();
-        }
-
-        public void LinqJoin()
-        {
-            var data = (from t in db.Teachers
-                        join c in db.Classes
-                        on t.ClassId equals c.id
-                        select new { TeacherName = t.Name, TeacherId = t.id, Class = c.class1 });
-            foreach (var item in data)
-            {
-                Console.WriteLine($"{item.TeacherId}. {item.TeacherName} {item.Class}");
-            }
-        }
-
-        public void StudentParent()
-        {
-            var data = db.vw_studentInfo.ToList();
-            foreach (var item in data)
-            {
-                Console.WriteLine($"{item.studentid} {item.Student} {item.FatherName} {item.MotherName}");
-            }
-        }
-
-        public void CreateStudentParent()
-        {
-            Console.WriteLine("Enter Student Name");
-            var studentName = Console.ReadLine();
-            Console.WriteLine("Enter Father Name");
-            var fatherName = Console.ReadLine();
-            Console.WriteLine("Enter Mother Name");
-            var motherName = Console.ReadLine();
-
-            var res = db.SP_CREATE_STUDENT_PARENT(studentName, fatherName, motherName);
-
-            var result = db.sp_studentParent();
         }
     }
 }

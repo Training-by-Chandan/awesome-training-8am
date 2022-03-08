@@ -56,5 +56,10 @@ namespace EFIntegration.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CREATE_STUDENT_PARENT", sTUDENTNAMEParameter, fATHERNAMEParameter, mOTHERNAMEParameter);
         }
+    
+        public virtual ObjectResult<sp_studentParent_Result> sp_studentParent()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_studentParent_Result>("sp_studentParent");
+        }
     }
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbIntegration", "DbIntegrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFIntegration", "..\EFIntegration\EFIntegration.csproj", "{9CA65EB3-3190-452E-A34F-D0C8B168808B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirstIntegration", "CodeFirstIntegration\CodeFirstIntegration.csproj", "{A8AE1884-9A2D-4965-8542-FA88CB1F0AC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9CA65EB3-3190-452E-A34F-D0C8B168808B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CA65EB3-3190-452E-A34F-D0C8B168808B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CA65EB3-3190-452E-A34F-D0C8B168808B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AE1884-9A2D-4965-8542-FA88CB1F0AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AE1884-9A2D-4965-8542-FA88CB1F0AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AE1884-9A2D-4965-8542-FA88CB1F0AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AE1884-9A2D-4965-8542-FA88CB1F0AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

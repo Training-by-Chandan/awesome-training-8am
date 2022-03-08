@@ -1,0 +1,8 @@
+﻿Step 1 : Create a blank DB
+Step 2 : Add the connectionstring in the app.config or web.config file with name and provider name (System.Data.SqlClient)
+Step 3 : Install the "EntityFramework" from Nuget
+Step 4 : Create the Context class as shown in ConsoleContext which is nherited from DBContext
+Step 5 : Open the Package Manager Console and run "enable-migrations" command
+Step 6 : Create Models and add them to Context Class with DBSet<> Properties
+Step 7 : Run the command "Add-Migration <nameWithoutSpaces>" with Name 
+Step 8 : Update Database
