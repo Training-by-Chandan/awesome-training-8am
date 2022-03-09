@@ -54,25 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleContext.cs" />
-    <Compile Include="Migrations\202203080121596_Initial.cs" />
-    <Compile Include="Migrations\202203080121596_Initial.designer.cs">
-      <DependentUpon>202203080121596_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202203090059391_initial.cs" />
+    <Compile Include="Migrations\202203090059391_initial.designer.cs">
+      <DependentUpon>202203090059391_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202203080125004_phoneNumberAdded.cs" />
-    <Compile Include="Migrations\202203080125004_phoneNumberAdded.designer.cs">
-      <DependentUpon>202203080125004_phoneNumberAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203080143526_teacherAdded.cs" />
-    <Compile Include="Migrations\202203080143526_teacherAdded.designer.cs">
-      <DependentUpon>202203080143526_teacherAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203080147479_AttribAdded.cs" />
-    <Compile Include="Migrations\202203080147479_AttribAdded.designer.cs">
-      <DependentUpon>202203080147479_AttribAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203080151488_columnTypeVarChar.cs" />
-    <Compile Include="Migrations\202203080151488_columnTypeVarChar.designer.cs">
-      <DependentUpon>202203080151488_columnTypeVarChar.cs</DependentUpon>
+    <Compile Include="Migrations\202203090103316_foreignKeyApplied.cs" />
+    <Compile Include="Migrations\202203090103316_foreignKeyApplied.designer.cs">
+      <DependentUpon>202203090103316_foreignKeyApplied.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Class.cs" />
@@ -86,24 +74,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202203080121596_Initial.resx">
-      <DependentUpon>202203080121596_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203080125004_phoneNumberAdded.resx">
-      <DependentUpon>202203080125004_phoneNumberAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203080143526_teacherAdded.resx">
-      <DependentUpon>202203080143526_teacherAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203080147479_AttribAdded.resx">
-      <DependentUpon>202203080147479_AttribAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203080151488_columnTypeVarChar.resx">
-      <DependentUpon>202203080151488_columnTypeVarChar.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Process.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Process.txt" />
+    <EmbeddedResource Include="Migrations\202203090059391_initial.resx">
+      <DependentUpon>202203090059391_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203090103316_foreignKeyApplied.resx">
+      <DependentUpon>202203090103316_foreignKeyApplied.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

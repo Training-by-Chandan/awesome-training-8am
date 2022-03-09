@@ -24,5 +24,10 @@ namespace CodeFirstIntegration.Models
         [Column(TypeName = "varchar")]
         [StringLength(20)]
         public string PhoneNumber { get; set; }
+
+        public int ClassId { get; set; }
+
+        [ForeignKey("ClassId")]
+        public virtual Class Classes { get; set; } //navigation property
     }
 }

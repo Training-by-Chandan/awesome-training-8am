@@ -17,6 +17,7 @@ namespace CodeFirstIntegration
                 Console.WriteLine("Press 1 to read all data\nPress 2 to read specific data\nPress 3 to insert the data\nPress 4 to update the data \nPress 5 to delete the data");
                 var choice = Convert.ToInt32(Console.ReadLine());
                 DBs db = new DBs();
+                db.ReadClassById();
                 switch (choice)
                 {
                     case 1:
@@ -54,6 +55,22 @@ namespace CodeFirstIntegration
     {
         private ConsoleContext db = new ConsoleContext();
 
+        public void ReadClassById()
+        {
+            Console.WriteLine("Enter the Id");
+            var id = Convert.ToInt32(Console.ReadLine());
+            var existing = db.Classes.Find(id);
+            if (existing != null)
+            {
+                Console.WriteLine($"Class => {existing.ClassName}");
+                Console.WriteLine("=============================");
+                foreach (var item in existing.Students)
+                {
+                    Console.WriteLine($"{item.id}. {item.Name} {item.Email}");
+                }
+            }
+        }
+
         internal void ReadDataById()
         {
             Console.WriteLine("Enter the Id");
@@ -67,7 +84,7 @@ namespace CodeFirstIntegration
             }
             else
             {
-                Console.WriteLine($"{existing.id}. {existing.Name} {existing.Email} {existing.PhoneNumber}");
+                Console.WriteLine($"{existing.id}. {existing.Name} {existing.Email} {existing.PhoneNumber} Class => {existing.Classes.ClassName}");
                 Console.WriteLine("=========================================\n");
             }
         }

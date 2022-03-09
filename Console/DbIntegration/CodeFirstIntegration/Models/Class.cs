@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CodeFirstIntegration.Models
 {
@@ -6,5 +7,6 @@ namespace CodeFirstIntegration.Models
     {
         public int Id { get; set; }
         public string ClassName { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }
