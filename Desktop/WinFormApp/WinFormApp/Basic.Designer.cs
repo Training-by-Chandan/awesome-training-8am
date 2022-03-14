@@ -37,6 +37,12 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.gridStudent = new System.Windows.Forms.DataGridView();
+            this.lblId = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.lblFnamevalid = new System.Windows.Forms.Label();
+            this.lblLnameValid = new System.Windows.Forms.Label();
+            this.lblEmailValid = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridStudent)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +75,7 @@
             // 
             // txtFName
             // 
+            this.txtFName.BackColor = System.Drawing.Color.White;
             this.txtFName.Location = new System.Drawing.Point(184, 56);
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(338, 26);
@@ -116,11 +123,76 @@
             this.gridStudent.Size = new System.Drawing.Size(477, 227);
             this.gridStudent.TabIndex = 8;
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(60, 26);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 16);
+            this.lblId.TabIndex = 9;
+            this.lblId.Visible = false;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(412, 228);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(110, 48);
+            this.btnEdit.TabIndex = 11;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Visible = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(261, 228);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(110, 48);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
+            // 
+            // lblFnamevalid
+            // 
+            this.lblFnamevalid.AutoSize = true;
+            this.lblFnamevalid.ForeColor = System.Drawing.Color.Red;
+            this.lblFnamevalid.Location = new System.Drawing.Point(525, 59);
+            this.lblFnamevalid.Name = "lblFnamevalid";
+            this.lblFnamevalid.Size = new System.Drawing.Size(15, 20);
+            this.lblFnamevalid.TabIndex = 12;
+            this.lblFnamevalid.Text = "*";
+            // 
+            // lblLnameValid
+            // 
+            this.lblLnameValid.AutoSize = true;
+            this.lblLnameValid.ForeColor = System.Drawing.Color.Red;
+            this.lblLnameValid.Location = new System.Drawing.Point(525, 103);
+            this.lblLnameValid.Name = "lblLnameValid";
+            this.lblLnameValid.Size = new System.Drawing.Size(15, 20);
+            this.lblLnameValid.TabIndex = 13;
+            this.lblLnameValid.Text = "*";
+            // 
+            // lblEmailValid
+            // 
+            this.lblEmailValid.AutoSize = true;
+            this.lblEmailValid.ForeColor = System.Drawing.Color.Red;
+            this.lblEmailValid.Location = new System.Drawing.Point(525, 154);
+            this.lblEmailValid.Name = "lblEmailValid";
+            this.lblEmailValid.Size = new System.Drawing.Size(15, 20);
+            this.lblEmailValid.TabIndex = 14;
+            this.lblEmailValid.Text = "*";
+            // 
             // Basic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 608);
+            this.ClientSize = new System.Drawing.Size(678, 608);
+            this.Controls.Add(this.lblEmailValid);
+            this.Controls.Add(this.lblLnameValid);
+            this.Controls.Add(this.lblFnamevalid);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.gridStudent);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnReset);
@@ -151,5 +223,11 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.DataGridView gridStudent;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label lblFnamevalid;
+        private System.Windows.Forms.Label lblLnameValid;
+        private System.Windows.Forms.Label lblEmailValid;
     }
 }

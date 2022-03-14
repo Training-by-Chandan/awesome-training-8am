@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -53,12 +54,11 @@ namespace WinFormApp.Services
                 while (reader.Read())
                 {
                     Student student = new Student();
-                    student.Id=Convert.ToInt32(reader["Id"]);
+                    student.Id = Convert.ToInt32(reader["Id"]);
                     student.FirstName = reader["FName"].ToString();
                     student.LastName = reader["LName"].ToString();
                     student.Email = reader["Email"].ToString();
                     Students.Add(student);
-                    
                 }
                 //step 6 : Clone the connection
                 con.Close();
@@ -68,6 +68,48 @@ namespace WinFormApp.Services
             {
                 Console.WriteLine(ex.ToString());
                 return new List<Student>();
+            }
+        }
+
+        public (bool, string) Delete(int Id)
+        {
+            try
+            {
+                var existing = db.Students.Find(Id);
+                if (existing != null)
+                {
+                    db.Students.Remove(existing);
+                    db.SaveChanges();
+                    return (true, "Deleted Successfully");
+                }
+                return (false, "Data not found");
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
+        }
+
+        public (bool, string) Edit(int Id, string fname, string lname, string email)
+        {
+            try
+            {
+                var existing = db.Students.Find(Id);
+                if (existing != null)
+                {
+                    existing.FirstName = fname;
+                    existing.LastName = lname;
+                    existing.Email = email;
+
+                    db.Entry(existing).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return (true, "Updated Successfully");
+                }
+                return (false, "Data not found");
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
             }
         }
     }

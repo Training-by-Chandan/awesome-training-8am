@@ -16,7 +16,7 @@ namespace WinFormApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Basic());
+            Application.Run(new MasterForm());
         }
     }
 }

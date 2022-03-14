@@ -15,5 +15,6 @@ namespace WinFormApp.Context
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
     }
 }

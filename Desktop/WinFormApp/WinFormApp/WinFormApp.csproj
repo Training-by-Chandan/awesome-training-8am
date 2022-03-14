@@ -64,20 +64,60 @@
       <DependentUpon>Basic.cs</DependentUpon>
     </Compile>
     <Compile Include="Context\CurrentContext.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterForm.Designer.cs">
+      <DependentUpon>MasterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202203100116304_StudentAdded.cs" />
     <Compile Include="Migrations\202203100116304_StudentAdded.designer.cs">
       <DependentUpon>202203100116304_StudentAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203140128008_userInfo.cs" />
+    <Compile Include="Migrations\202203140128008_userInfo.designer.cs">
+      <DependentUpon>202203140128008_userInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Model\UserType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RTBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RTBox.Designer.cs">
+      <DependentUpon>RTBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="UserControls\TextWithLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TextWithLabel.Designer.cs">
+      <DependentUpon>TextWithLabel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Basic.resx">
       <DependentUpon>Basic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterForm.resx">
+      <DependentUpon>MasterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203100116304_StudentAdded.resx">
       <DependentUpon>202203100116304_StudentAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203140128008_userInfo.resx">
+      <DependentUpon>202203140128008_userInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +129,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RTBox.resx">
+      <DependentUpon>RTBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TextWithLabel.resx">
+      <DependentUpon>TextWithLabel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,7 +152,9 @@
   <ItemGroup>
     <None Include="Resources\IMG-20181125-WA0003.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
