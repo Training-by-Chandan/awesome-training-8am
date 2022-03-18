@@ -14,7 +14,11 @@ namespace WinFormApp.Context
         {
         }
 
+        #region DbSet Properties
+
         public DbSet<Student> Students { get; set; }
         public DbSet<UserInfo> UserInfo { get; set; }
+
+        #endregion DbSet Properties
     }
 }

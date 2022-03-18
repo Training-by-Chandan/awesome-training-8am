@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormApp", "WinFormApp\WinFormApp.csproj", "{A1FD1BD6-AAFF-461E-91EA-A77322E8DF50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagment", "HRManagment\HRManagment.csproj", "{77B66032-03AB-4BB5-AAA7-95AF48BC890A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A1FD1BD6-AAFF-461E-91EA-A77322E8DF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1FD1BD6-AAFF-461E-91EA-A77322E8DF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1FD1BD6-AAFF-461E-91EA-A77322E8DF50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B66032-03AB-4BB5-AAA7-95AF48BC890A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B66032-03AB-4BB5-AAA7-95AF48BC890A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B66032-03AB-4BB5-AAA7-95AF48BC890A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B66032-03AB-4BB5-AAA7-95AF48BC890A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

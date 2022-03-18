@@ -1,0 +1,10 @@
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\bin\Release\HRManagment.exe.config
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\bin\Release\HRManagment.exe
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\bin\Release\HRManagment.pdb
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.csproj.SuggestedBindingRedirects.cache
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.Form1.resources
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.Properties.Resources.resources
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.csproj.GenerateResource.cache
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.csproj.CoreCompileInputs.cache
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.exe
+D:\Projects\Broadway\Broadway-800AM\Desktop\WinFormApp\HRManagment\obj\Release\HRManagment.pdb
