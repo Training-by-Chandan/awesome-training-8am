@@ -1,5 +1,7 @@
 ﻿using HRManagment.Context;
 using HRManagment.Models;
+using HRManagment.Repository;
+using HRManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,16 @@ namespace HRManagment.Service
 {
     public class UserService
     {
-        private DefaultContext db = new DefaultContext();
+        private UserRepository userRepository = new UserRepository();
 
-        public (bool, string) Login(string username, string password)
+        public (bool, string) Login(LoginViewModel model)
         {
             try
             {
-                var existing = db.UserInfos.FirstOrDefault(p => p.Username == username);
+                var existing = userRepository.GetByUserName(model.Username);
                 if (existing != null)
                 {
-                    if (existing.Password == password)
+                    if (existing.Password == model.Password)
                     {
                         Singleton.Instance.IsLoggedIn = true;
                         Singleton.Instance.Username = existing.Username;
@@ -42,28 +44,28 @@ namespace HRManagment.Service
             }
         }
 
-        public (bool, string) CreateUser(string username, string password, UserType userType)
+        public (bool, string) CreateUser(RegisterUserViewModel model)
         {
             try
             {
-                var existing = db.UserInfos.FirstOrDefault(p => p.Username == username);
+                var existing = userRepository.GetByUserName(model.Username);
                 if (existing != null)
                 {
                     return (false, "User already exists");
                 }
-                var user = new UserInfo();
-                user.Username = username;
-                user.Password = password;
-                user.UserType = userType;
+                var user = model.ConvertToUserInfo();
 
-                db.UserInfos.Add(user);
-                db.SaveChanges();
-                return (true, "Added Successfully");
+                return userRepository.CreateUser(user);
             }
             catch (Exception ex)
             {
                 return (false, ex.Message);
             }
+        }
+
+        public List<UserInfoViewModel> GetAll()
+        {
+            return userRepository.GetAllUSers().Select(p => new UserInfoViewModel() { Id = p.Id, Username = p.Username, UserType = p.UserType }).ToList();
         }
     }
 }
