@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HRManagment.ViewModels;
 
 namespace HRManagment.Forms.Admin
 {
@@ -24,6 +25,13 @@ namespace HRManagment.Forms.Admin
         private void UserForm_Load(object sender, EventArgs e)
         {
             cmbUserType.DataSource = Enum.GetValues(typeof(UserType));
+            LoadUsers();
+        }
+
+        private void LoadUsers()
+        {
+            gridUsers.DataSource = userService.GetAll();
+            gridUsers.Refresh();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -41,7 +49,7 @@ namespace HRManagment.Forms.Admin
             var usertype = (UserType)cmbUserType.SelectedItem;
 
             //todo create user here
-            var result = userService.CreateUser(txtUserName.Text, txtPassword.Text, usertype);
+            var result = userService.CreateUser(new RegisterUserViewModel { Username = txtUserName.Text, Password = txtPassword.Text, UserType = usertype });
             if (result.Item1)
             {
                 //successfully created

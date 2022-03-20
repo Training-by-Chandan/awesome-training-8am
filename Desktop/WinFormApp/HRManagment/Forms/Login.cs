@@ -1,4 +1,5 @@
 ﻿using HRManagment.Service;
+using HRManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace HRManagment.Forms
         {
             //validations
             var userService = new UserService();
-            var res = userService.Login(txtUser.Text, txtPassword.Text);
+            var res = userService.Login(new LoginViewModel { Username = txtUser.Text, Password = txtPassword.Text });
             if (res.Item1)
             {
                 //logics
