@@ -1,10 +1,12 @@
 ﻿namespace HRManagment.Migrations
 {
     using HRManagment.Models;
+    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Security.Cryptography;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HRManagment.Context.DefaultContext>
     {
@@ -21,6 +23,19 @@
                 db.UserInfos.Add(adminUser);
                 db.SaveChanges();
             }
+
+            #region Hash Existing Password
+
+            var hasher = new PasswordHasher<UserInfo>();
+            var users = db.UserInfos.Where(p => p.PasswordHash == null).ToList();
+            foreach (var item in users)
+            {
+                item.PasswordHash = hasher.HashPassword(item, item.Password);
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            #endregion Hash Existing Password
         }
     }
 }
