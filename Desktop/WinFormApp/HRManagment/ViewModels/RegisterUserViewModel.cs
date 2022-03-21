@@ -11,7 +11,6 @@ namespace HRManagment.ViewModels
             return new UserInfo()
             {
                 Username = this.Username,
-                Password = this.Password,
                 UserType = this.UserType
             };
         }
