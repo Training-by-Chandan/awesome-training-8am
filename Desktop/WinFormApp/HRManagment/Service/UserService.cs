@@ -1,7 +1,9 @@
-﻿using HRManagment.Context;
+﻿using HRManagment.Common;
+using HRManagment.Context;
 using HRManagment.Models;
 using HRManagment.Repository;
 using HRManagment.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace HRManagment.Service
                 var existing = userRepository.GetByUserName(model.Username);
                 if (existing != null)
                 {
-                    if (existing.Password == model.Password)
+                    if (Hasher.VerifyHashedPassword(existing.PasswordHash, model.Password))
                     {
                         Singleton.Instance.IsLoggedIn = true;
                         Singleton.Instance.Username = existing.Username;
@@ -54,6 +56,7 @@ namespace HRManagment.Service
                     return (false, "User already exists");
                 }
                 var user = model.ConvertToUserInfo();
+                user.PasswordHash = Hasher.HashPassword(model.Password);
 
                 return userRepository.CreateUser(user);
             }
