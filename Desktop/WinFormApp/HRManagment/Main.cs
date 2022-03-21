@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace HRManagment
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text = "HR Management | " + ConfigurationManager.AppSettings["CompanyName"].ToString();
             Login l = new Login();
             l.MdiParent = this;
             l.Show();
