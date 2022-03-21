@@ -1,5 +1,6 @@
 ﻿namespace HRManagment.Migrations
 {
+    using HRManagment.Common;
     using HRManagment.Models;
     using Microsoft.AspNetCore.Identity;
     using System;
@@ -19,21 +20,21 @@
         {
             if (!db.UserInfos.Any(p => p.Username == "admin@admin.com"))
             {
-                var adminUser = new UserInfo() { Username = "admin@admin.com", Password = "Admin@123", UserType = UserType.Admin };
+                var adminUser = new UserInfo() { Username = "admin@admin.com", UserType = UserType.Admin };
+                adminUser.PasswordHash = Hasher.HashPassword("Admin@123");
                 db.UserInfos.Add(adminUser);
                 db.SaveChanges();
             }
 
             #region Hash Existing Password
 
-            var hasher = new PasswordHasher<UserInfo>();
-            var users = db.UserInfos.Where(p => p.PasswordHash == null).ToList();
-            foreach (var item in users)
-            {
-                item.PasswordHash = hasher.HashPassword(item, item.Password);
-                db.Entry(item).State = EntityState.Modified;
-                db.SaveChanges();
-            }
+            //var users = db.UserInfos.ToList();
+            //foreach (var item in users)
+            //{
+            //    item.PasswordHash = Hasher.HashPassword(item.Password);
+            //    db.Entry(item).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //}
 
             #endregion Hash Existing Password
         }

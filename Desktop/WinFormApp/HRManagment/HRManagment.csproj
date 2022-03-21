@@ -80,6 +80,7 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -139,6 +140,10 @@
     <Compile Include="Migrations\202203201549160_paswodHas.designer.cs">
       <DependentUpon>202203201549160_paswodHas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203211553524_removedPlainPasswordField.cs" />
+    <Compile Include="Migrations\202203211553524_removedPlainPasswordField.designer.cs">
+      <DependentUpon>202203211553524_removedPlainPasswordField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Program.cs" />
@@ -163,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203201549160_paswodHas.resx">
       <DependentUpon>202203201549160_paswodHas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211553524_removedPlainPasswordField.resx">
+      <DependentUpon>202203211553524_removedPlainPasswordField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
