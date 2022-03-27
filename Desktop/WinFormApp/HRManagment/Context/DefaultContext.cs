@@ -15,5 +15,6 @@ namespace HRManagment.Context
         }
 
         public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<Leave> Leaves { get; set; }
     }
 }

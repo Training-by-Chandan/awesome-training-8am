@@ -37,6 +37,7 @@ namespace HRManagment
 
         public bool IsLoggedIn { get; set; }
         public string Username { get; set; }
+        public int UserId { get; set; }
         public UserType UserType { get; set; }
 
         public delegate void UserChange();

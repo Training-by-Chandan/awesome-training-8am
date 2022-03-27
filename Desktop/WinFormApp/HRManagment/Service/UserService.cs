@@ -27,6 +27,7 @@ namespace HRManagment.Service
                     {
                         Singleton.Instance.IsLoggedIn = true;
                         Singleton.Instance.Username = existing.Username;
+                        Singleton.Instance.UserId = existing.Id;
                         Singleton.Instance.UserType = existing.UserType;
                         return (true, "Loggedin Successfully");
                     }

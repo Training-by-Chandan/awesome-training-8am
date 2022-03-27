@@ -57,5 +57,19 @@ namespace HRManagment
             u.MdiParent = this;
             u.Show();
         }
+
+        private void leaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.Employee.LeaveForm u = new Forms.Employee.LeaveForm();
+            u.MdiParent = this;
+            u.Show();
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HRManagment.Forms.Admin.UserLeave u = new Forms.Admin.UserLeave();
+            u.MdiParent = this;
+            u.Show();
+        }
     }
 }
