@@ -1,0 +1,27 @@
+h1,h3,h5{
+    text-align: center;
+    background-color: aqua;
+    color: red;
+}
+h2,h4,h6{
+    text-align: center;
+    background-color: aqua;
+    color:blue;
+}
+.special{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color:green;
+}
+input{
+    font-family: cursive;
+    font-size: 20px;
+    width: 100%;
+    margin-left: 5% ;
+    margin-right: 5%;
+}
+input:hover{
+    background-color: rgb(255, 21, 21);
+    color: rgb(0, 0, 0);
+    
+}
