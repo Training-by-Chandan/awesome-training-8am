@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="row">
 
+    @Html.Partial("_PartialBox", new WebApp.ViewModels.PartialBoxViewModel() { Title = "Sales", Numbers = 43, Color = "bg-success", Icon = "ion-stats-bars" })
+    @Html.Partial("_PartialBox", new WebApp.ViewModels.PartialBoxViewModel() { Title = "Purchase", Numbers = 34, Color = "bg-warning", Icon = "ion-bag" })
+</div>
 <p>Use this area to provide additional information.</p>
