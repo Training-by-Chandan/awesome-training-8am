@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -10,7 +11,8 @@ namespace WebApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var data = GenerateDummyData();
+            return View(data);
         }
 
         public ActionResult About()
@@ -48,6 +50,17 @@ namespace WebApp.Controllers
         {
             ViewBag.Name = name;
             return View();
+        }
+
+        private IndexPageViewModel GenerateDummyData()
+        {
+            var res = new IndexPageViewModel();
+            res.Cards = new List<PartialCardViewModel>();
+            res.Cards.Add(new PartialCardViewModel() { Body = "This is Arnab", Title = "Arnab Nepal", ImageUrl = "/Theme/admin/dist/img/photo1.png" });
+            res.Cards.Add(new PartialCardViewModel() { Body = "This is Jeewsan", Title = "Jeewsan Dhami", ImageUrl = "/Theme/admin/dist/img/photo2.png" });
+            res.Cards.Add(new PartialCardViewModel() { Body = "This is Prabi", Title = "Prabi Pradhanange", ImageUrl = "/Theme/admin/dist/img/photo3.jpg" });
+            res.Cards.Add(new PartialCardViewModel() { Body = "This is Bishwa", Title = "Bishwa Gautam", ImageUrl = "/Theme/admin/dist/img/photo4.jpg" });
+            return res;
         }
     }
 }
