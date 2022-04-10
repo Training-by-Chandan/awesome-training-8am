@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Services;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private StudentService studentService = new StudentService();
+
         public ActionResult Index()
         {
             var data = GenerateDummyData();
@@ -61,6 +64,12 @@ namespace WebApp.Controllers
             res.Cards.Add(new PartialCardViewModel() { Body = "This is Prabi", Title = "Prabi Pradhanange", ImageUrl = "/Theme/admin/dist/img/photo3.jpg" });
             res.Cards.Add(new PartialCardViewModel() { Body = "This is Bishwa", Title = "Bishwa Gautam", ImageUrl = "/Theme/admin/dist/img/photo4.jpg" });
             return res;
+        }
+
+        public ActionResult Students()
+        {
+            var data = studentService.GetAll();
+            return View(data);
         }
     }
 }
