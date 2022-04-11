@@ -1,0 +1,45 @@
+﻿@model WebApp.ViewModels.StudentViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@Html.ValidationSummary()
+
+<form method="post" action="/student/create">
+    <div class="row">
+        @Html.EditorFor(p => p.FirstName, new { htmlAttributes = new { placeholder = "Enter the firstname" } })
+        @*<input type="text" name="firstname" placeholder="Enter the firstname" />*@
+        @*  @Html.ValidationMessage("firstname")*@
+        @Html.ValidationMessageFor(p => p.FirstName, "", new { @class = "text-danger" })
+    </div>
+    <div class="row">
+        @Html.EditorFor(p => p.LastName, new { htmlAttributes = new { placeholder = "Enter the lastname" } })
+        @* <input type="text" name="lastname" placeholder="Enter the lastname" />*@
+        @* @Html.ValidationMessage("lastname")*@
+        @Html.ValidationMessageFor(p => p.LastName, "", new { @class = "text-danger" })
+    </div>
+    <div class="row">
+        @Html.EditorFor(p => p.Email, new { htmlAttributes = new { placeholder = "Enter the email" } })
+        @* <input type="text" name="email" placeholder="Enter the email" />*@
+        @Html.ValidationMessageFor(p => p.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="row">
+        @Html.EditorFor(p => p.Age, new { htmlAttributes = new { placeholder = "Enter the age" } })
+        @* <input type="text" name="email" placeholder="Enter the email" />*@
+        @Html.ValidationMessageFor(p => p.Age, "", new { @class = "text-danger" })
+    </div>
+    <div class="row">
+        @Html.EditorFor(p => p.Password, new { htmlAttributes = new { placeholder = "Enter the password" } })
+
+        @Html.ValidationMessageFor(p => p.Password, "", new { @class = "text-danger" })
+    </div>
+    <div class="row">
+        @Html.EditorFor(p => p.PhoneNumber, new { htmlAttributes = new { placeholder = "Enter the phone number" } })
+        @*  <input type="text" name="phonenumber" placeholder="Enter the phone number" />*@
+    </div>
+    <div class="row">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>

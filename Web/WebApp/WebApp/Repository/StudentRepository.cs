@@ -6,7 +6,14 @@ using WebApp.Models;
 
 namespace WebApp.Repository
 {
-    public class StudentRepository
+    public interface IStudentRepository
+    {
+        bool Create(Student student);
+
+        IQueryable<Student> GetAll();
+    }
+
+    public class StudentRepository : IStudentRepository
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
