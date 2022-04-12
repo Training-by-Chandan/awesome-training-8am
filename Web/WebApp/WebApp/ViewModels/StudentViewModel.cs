@@ -15,7 +15,7 @@ namespace WebApp.ViewModels
         [Required]
         public string Email { get; set; }
 
-        [Required]
+       
         public int Age { get; set; }
 
         [DataType(DataType.Currency)]

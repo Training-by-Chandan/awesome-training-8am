@@ -16,6 +16,7 @@
                     <th>Fullname</th>
                     <th>Email</th>
                     <th>PhoneNumber</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,11 @@
                         <td>@item.Fullname</td>
                         <td>@item.Email</td>
                         <td>@item.PhoneNumber</td>
+                        <td>
+                            <a href="/student/edit/@item.Id" class="btn btn-primary">Edit</a>
+                            <a href="/student/delete/@item.Id" class="btn btn-danger">Delete</a>
+                            <a href="/student/details/@item.Id" class="btn btn-info">Details</a>
+                        </td>
                     </tr>
                 }
             </tbody>

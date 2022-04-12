@@ -10,7 +10,11 @@ namespace WebApp.Repository
     {
         bool Create(Student student);
 
+        bool Edit(Student model);
+
         IQueryable<Student> GetAll();
+
+        Student GetbyId(int id);
     }
 
     public class StudentRepository : IStudentRepository
@@ -27,6 +31,25 @@ namespace WebApp.Repository
             try
             {
                 db.Students.Add(student);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public Student GetbyId(int id)
+        {
+            return db.Students.Find(id);
+        }
+
+        public bool Edit(Student model)
+        {
+            try
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return true;
             }

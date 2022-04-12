@@ -1,0 +1,43 @@
+﻿@model WebApp.ViewModels.StudentViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<h3><a href="/student/index" class="btn btn-primary">Back to List</a></h3>
+@if (Model == null)
+{
+    <span class="alert alert-danger">No Records found</span>
+}
+else
+{
+
+<form method="post" action="/student/edit">
+    @Html.AntiForgeryToken()
+    <div class="row">
+      @Html.HiddenFor(p=>p.Id)
+    </div>
+    <div class="row">
+      @Html.LabelFor(p=>p.FirstName)
+        @Html.EditorFor(p=>p.FirstName)
+        @Html.ValidationMessageFor(p=>p.FirstName)
+    </div>
+    <div class="row">
+        @Html.LabelFor(p => p.LastName)
+        @Html.EditorFor(p => p.LastName)
+        @Html.ValidationMessageFor(p => p.LastName)
+
+    </div>
+    <div class="row">
+        @Html.LabelFor(p => p.Email)
+        @Html.EditorFor(p => p.Email)
+        @Html.ValidationMessageFor(p => p.Email)
+    </div>
+    <div class="row">
+        @Html.LabelFor(p => p.PhoneNumber)
+        @Html.EditorFor(p => p.PhoneNumber)
+        @Html.ValidationMessageFor(p => p.PhoneNumber)
+    </div>
+    <input type="submit" class="btn btn-primary" value="Edit" />
+</form>
+}

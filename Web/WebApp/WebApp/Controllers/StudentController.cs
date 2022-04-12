@@ -31,6 +31,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(StudentViewModel model)
         {
             if (!ModelState.IsValid)
@@ -45,7 +46,33 @@ namespace WebApp.Controllers
             }
             else
             {
-                return View();
+                return View(model);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var data = studentService.GetById(id);
+            return View(data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(StudentViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var result = studentService.Edit(model);
+            if (result)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(model);
             }
         }
     }

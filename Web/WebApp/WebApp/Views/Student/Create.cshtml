@@ -8,6 +8,7 @@
 @Html.ValidationSummary()
 
 <form method="post" action="/student/create">
+    @Html.AntiForgeryToken()
     <div class="row">
         @Html.EditorFor(p => p.FirstName, new { htmlAttributes = new { placeholder = "Enter the firstname" } })
         @*<input type="text" name="firstname" placeholder="Enter the firstname" />*@

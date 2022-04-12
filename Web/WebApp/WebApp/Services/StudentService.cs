@@ -12,7 +12,11 @@ namespace WebApp.Services
     {
         bool Create(StudentViewModel model);
 
+        bool Edit(StudentViewModel model);
+
         List<StudentViewModel> GetAll();
+
+        StudentViewModel GetById(int id);
     }
 
     public class StudentService : IStudentService
@@ -56,6 +60,45 @@ namespace WebApp.Services
                     PhoneNumber = model.PhoneNumber
                 };
                 return studentRepository.Create(student);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public StudentViewModel GetById(int id)
+        {
+            var data = studentRepository.GetbyId(id);
+            if (data == null) return null;
+            else
+            {
+                var ret = new StudentViewModel()
+                {
+                    Id = data.Id,
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
+                    Email = data.Email,
+                    PhoneNumber = data.PhoneNumber
+                };
+                return ret;
+            }
+        }
+
+        public bool Edit(StudentViewModel model)
+        {
+            try
+            {
+                var existing = studentRepository.GetbyId(model.Id);
+                if (existing == null) return false;
+                else
+                {
+                    existing.FirstName = model.FirstName;
+                    existing.LastName = model.LastName;
+                    existing.Email = model.Email;
+                    existing.PhoneNumber = model.PhoneNumber;
+                    return studentRepository.Edit(existing);
+                }
             }
             catch (Exception ex)
             {
