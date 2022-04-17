@@ -8,6 +8,7 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StudentController : Controller
     {
         private readonly IStudentService studentService;
@@ -18,6 +19,7 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var data = studentService.GetAll();

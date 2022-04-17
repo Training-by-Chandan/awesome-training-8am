@@ -23,9 +23,9 @@ namespace WebApp.Services
     {
         private readonly IStudentRepository studentRepository;
 
-        public StudentService()
+        public StudentService(IStudentRepository studentRepository)
         {
-            studentRepository = new StudentRepository();
+            this.studentRepository = studentRepository;
         }
 
         public List<StudentViewModel> GetAll()

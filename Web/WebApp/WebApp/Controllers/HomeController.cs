@@ -32,6 +32,7 @@ namespace WebApp.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Jeewsan()
         {
             return View();
