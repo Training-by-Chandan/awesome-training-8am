@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
+using Ecom.Web.Models;
+using Ecom.Web.ViewModels;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Ecom.Web.Models
+namespace Ecom.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

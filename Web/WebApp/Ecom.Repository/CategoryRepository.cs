@@ -1,4 +1,6 @@
-﻿using Ecom.Web.Models;
+﻿using Ecom.Data;
+using Ecom.Web.Models;
+using Ecom.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
