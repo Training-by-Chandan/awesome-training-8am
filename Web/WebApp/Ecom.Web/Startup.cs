@@ -1,7 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using Hangfire;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(Ecom.Web.Startup))]
+
 namespace Ecom.Web
 {
     public partial class Startup

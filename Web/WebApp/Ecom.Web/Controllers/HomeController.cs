@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Ecom.Services;
 using Ecom.Web.ViewModels;
+using Hangfire;
 
 namespace Ecom.Web.Controllers
 {
@@ -21,7 +23,14 @@ namespace Ecom.Web.Controllers
 
         public ActionResult Index()
         {
+            //var jobId = BackgroundJob.Enqueue(
+            //() => SendEmail());
             return View();
+        }
+
+        public void SendEmail()
+        {
+            Thread.Sleep(120000);
         }
 
         public ActionResult About()

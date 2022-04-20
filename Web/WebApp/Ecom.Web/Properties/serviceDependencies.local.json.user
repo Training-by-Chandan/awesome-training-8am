@@ -3,7 +3,26 @@
     "mssql1": {
       "restored": true,
       "restoreTime": "2022-04-17T14:57:51.5091732Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2022-04-20T15:48:01.0273161Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2022-04-20T15:50:04.4786107Z"
     }
   },
-  "parameters": {}
+  "parameters": {
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "cloud-shell-storage-centralindia"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "df3735ab-27ed-4101-95c4-479884ec6cd3"
+    }
+  }
 }

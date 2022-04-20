@@ -8,6 +8,8 @@ using Owin;
 using Ecom.Web.ViewModels;
 using Ecom.Data;
 using Ecom.Web.Models;
+using Hangfire;
+using Hangfire.SqlServer;
 
 namespace Ecom.Web
 {
@@ -20,7 +22,8 @@ namespace Ecom.Web
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
-
+            JobStorage.Current = new SqlServerStorage("DefaultConnection");
+            app.UseHangfireDashboard();
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie

@@ -14,6 +14,9 @@ namespace Ecom.Web
         {
             AreaRegistration.RegisterAllAreas();
             UnityConfig.RegisterComponents();
+
+            //register background jobs
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
