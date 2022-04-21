@@ -2,9 +2,11 @@ using AutoMapper;
 using Ecom.Data;
 using Ecom.Repository;
 using Ecom.Services;
+using Ecom.Web.Controllers;
 using Ecom.Web.ViewModels;
 using System.Web.Mvc;
 using Unity;
+using Unity.Injection;
 using Unity.Lifetime;
 using Unity.Mvc5;
 
@@ -17,6 +19,8 @@ namespace Ecom.Web
             var container = new UnityContainer();
 
             container.RegisterType<ApplicationDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
 
             #region Automapper
 
@@ -26,13 +30,19 @@ namespace Ecom.Web
 
             #endregion Automapper
 
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
+            #region Repositories
 
-            // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
+            container.RegisterType<IProductRepository, ProductRepository>();
+
+            #endregion Repositories
+
+            #region Services
 
             container.RegisterType<ICategoryService, CategoryService>();
+            container.RegisterType<IProductService, ProductService>();
+
+            #endregion Services
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

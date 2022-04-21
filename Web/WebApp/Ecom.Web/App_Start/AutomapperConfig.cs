@@ -10,14 +10,11 @@ namespace Ecom.Web
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(cfg =>
             {
-                //use this when the fields are not of same name
-                //   cfg.CreateMap<Category, CategoryViewModel>().AfterMap((src, dest) =>{
-                //       dest.Active = src.IsActive;
-                //});
-                //   cfg.CreateMap<CategoryViewModel, Category>().AfterMap((src, dest) => {
-                //       dest.IsActive = src.Active;
-                //   });
-
+                cfg.CreateMap<Product, ProductViewModel>().AfterMap((src, dest) =>
+                {
+                    dest.CategoryName = src.Category == null ? "" : src.Category.Name;
+                });
+                cfg.CreateMap<ProductViewModel, Product>();
                 cfg.CreateMap<Category, CategoryViewModel>().ReverseMap();
             });
 

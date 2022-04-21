@@ -80,6 +80,12 @@ namespace Ecom.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = UserManager.FindByEmail(model.Email);
+                    var role = UserManager.GetRoles(user.Id);
+                    if (role != null && role.Contains(StrConst.Roles.Admin))
+                    {
+                        return RedirectToLocal("/admin/dashboard/index");
+                    }
                     return RedirectToLocal(returnUrl);
 
                 case SignInStatus.LockedOut:

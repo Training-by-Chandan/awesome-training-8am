@@ -29,7 +29,7 @@ namespace Ecom.Services
             )
         {
             this.categoryRepository = categoryRepository;
-            //this.mapper = mapper;
+            this.mapper = mapper;
         }
 
         public List<CategoryViewModel> GetAll()
