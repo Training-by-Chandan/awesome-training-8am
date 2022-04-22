@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Ecom.Services
 {
@@ -15,6 +16,8 @@ namespace Ecom.Services
         (bool, string) Create(CategoryViewModel model);
 
         List<CategoryViewModel> GetAll();
+
+        List<SelectListItem> GetCategoriesListItems();
     }
 
     public class CategoryService : ICategoryService
@@ -36,7 +39,7 @@ namespace Ecom.Services
         {
             try
             {
-                var cats = categoryRepository.getAll().ToList();
+                var cats = categoryRepository.GetAll().ToList();
                 var data = mapper.Map<List<Category>, List<CategoryViewModel>>(cats);
                 return data.ToList();
             }
@@ -61,6 +64,15 @@ namespace Ecom.Services
                 Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                 return (false, ex.Message);
             }
+        }
+
+        public List<SelectListItem> GetCategoriesListItems()
+        {
+            return categoryRepository.GetAll().Select(p => new SelectListItem()
+            {
+                Text = p.Name,
+                Value = p.Id.ToString()
+            }).ToList();
         }
     }
 }

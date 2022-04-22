@@ -1,20 +1,17 @@
 ﻿using Ecom.Data;
+using Ecom.Web.Models;
+using System.Linq;
 
 namespace Ecom.Repository
 {
-    public interface IProductRepository
+    public interface IProductRepository : IBaseRepository<Product>
     {
     }
 
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        private readonly ApplicationDbContext db;
-
-        public ProductRepository(
-            ApplicationDbContext db
-            )
+        public ProductRepository(ApplicationDbContext db) : base(db)
         {
-            this.db = db;
         }
     }
 }

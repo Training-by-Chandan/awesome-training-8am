@@ -9,41 +9,14 @@ using System.Threading.Tasks;
 
 namespace Ecom.Repository
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IBaseRepository<Category>
     {
-        (bool, string) Create(Category model);
-
-        IQueryable<Category> getAll();
     }
 
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
-        private readonly ApplicationDbContext db;
-
-        public CategoryRepository(
-            ApplicationDbContext db
-            )
+        public CategoryRepository(ApplicationDbContext db) : base(db)
         {
-            this.db = db;
-        }
-
-        public IQueryable<Category> getAll()
-        {
-            return db.Categories;
-        }
-
-        public (bool, string) Create(Category model)
-        {
-            try
-            {
-                db.Categories.Add(model);
-                db.SaveChanges();
-                return (true, "Created Successfully");
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.Message);
-            }
         }
     }
 }
