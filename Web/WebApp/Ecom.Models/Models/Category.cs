@@ -6,7 +6,7 @@ namespace Ecom.Web.Models
     public class Category
     {
         [Key]
-        public Guid Id { get; set; } = new Guid();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string Name { get; set; }
         public string Description { get; set; }

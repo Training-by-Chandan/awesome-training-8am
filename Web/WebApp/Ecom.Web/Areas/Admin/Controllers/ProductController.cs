@@ -37,11 +37,24 @@ namespace Ecom.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ProductViewModel model)
+        public ActionResult Create(ProductViewModel model, HttpPostedFileBase productImage)
         {
             ViewBag.Categories = categoryService.GetCategoriesListItems();
 
             if (!ModelState.IsValid) return View(model);
+            //save the file and map its path
+            if (productImage.ContentLength > 0)
+            {
+                //save the file
+                var fileName = productImage.FileName;
+                var extension = System.IO.Path.GetExtension(fileName);
+                var newFile = Guid.NewGuid().ToString() + extension;
+                var fullPath = "/Uploads/Product/" + newFile;
+                //path mapping to db
+                model.FilePath = fullPath;
+                var mappedFile = Server.MapPath(fullPath);
+                productImage.SaveAs(mappedFile);
+            }
 
             var res = productService.Create(model);
             if (res.Item1)

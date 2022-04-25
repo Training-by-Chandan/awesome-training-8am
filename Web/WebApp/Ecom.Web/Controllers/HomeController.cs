@@ -12,14 +12,19 @@ namespace Ecom.Web.Controllers
 {
     public class HomeController : Controller
     {
-       
-     
+        private readonly IProductService productService;
+        public HomeController(
+            IProductService productService
+            )
+        {
+            this.productService = productService;
+        }
+        
 
         public ActionResult Index()
         {
-            //var jobId = BackgroundJob.Enqueue(
-            //() => SendEmail());
-            return View();
+            var data=productService.GetAll();
+            return View(data);
         }
 
         public void SendEmail()
