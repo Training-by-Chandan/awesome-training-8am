@@ -1,0 +1,15 @@
+﻿@model Ecom.Web.ViewModels.ProductViewModel
+
+<div class="card" style="width: 18rem;">
+    <img src="@Model.FilePath" class="card-img-top" alt="..." height="200" width="200">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+       
+        <p class="card-text">
+            <h4>Rs @Model.Price</h4>
+        <br/>
+        @Model.Description</p>
+        @Html.ActionLink("Add To Cart", "AddToCart", new { Productid=Model.Id },new { @class= "btn btn-primary" })
+@*        <a href="#" class="btn btn-primary">Add to cart</a>*@
+    </div>
+</div>

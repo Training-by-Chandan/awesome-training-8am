@@ -16,6 +16,10 @@ namespace Ecom.Web
                 });
                 cfg.CreateMap<ProductViewModel, Product>();
                 cfg.CreateMap<Category, CategoryViewModel>().ReverseMap();
+                cfg.CreateMap<ProductViewModel, ProductSessionViewModel>().AfterMap((src, dest) => {
+                    dest.ProductId = src.Id;
+                    dest.ProductName = src.Name;
+                });
             });
 
             return mapperConfiguration;
