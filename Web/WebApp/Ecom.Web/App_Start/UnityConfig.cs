@@ -34,6 +34,8 @@ namespace Ecom.Web
 
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IOrderRepository, OrderRepository>();
+            container.RegisterType<IOrderDetailsRepository, OrderDetailsRepository>();
 
             #endregion Repositories
 

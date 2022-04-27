@@ -15,19 +15,19 @@ namespace Ecom.Web.Controllers
     {
         private readonly IProductService productService;
         private readonly IMapper mapper;
+
         public HomeController(
-            IProductService productService, 
+            IProductService productService,
             IMapper mapper
             )
         {
             this.productService = productService;
             this.mapper = mapper;
         }
-        
 
         public ActionResult Index()
         {
-            var data=productService.GetAll();
+            var data = productService.GetAll();
             return View(data);
         }
 
@@ -51,15 +51,15 @@ namespace Ecom.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddToCart(Guid ProductId, int Quantity=1)
+        public ActionResult AddToCart(Guid ProductId, int Quantity = 1)
         {
             var cart = Session["Cart"] as SessionViewModel;
             if (cart == null) cart = new SessionViewModel();
             var existingProduct = cart.Products.FirstOrDefault(p => p.ProductId == ProductId);
-            if (existingProduct==null)
+            if (existingProduct == null)
             {
                 var product = productService.GetById(ProductId);
-                var sessionProduct=mapper.Map<ProductViewModel, ProductSessionViewModel>(product);
+                var sessionProduct = mapper.Map<ProductViewModel, ProductSessionViewModel>(product);
                 sessionProduct.Quantity = Quantity;
                 cart.Products.Add(sessionProduct);
             }
@@ -69,8 +69,19 @@ namespace Ecom.Web.Controllers
             }
 
             Session["Cart"] = cart;
-            return RedirectToAction("index");
+            return Redirect(Request.UrlReferrer.AbsoluteUri);
+            // return RedirectToAction("index");
         }
-      
+
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult ConfirmCheckout()
+        {
+            return View();
+        }
     }
 }

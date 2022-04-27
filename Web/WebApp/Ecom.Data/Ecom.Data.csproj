@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202204251459155_FilePathAdded.designer.cs">
       <DependentUpon>202204251459155_FilePathAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204271601453_OrderAndOrderDetails.cs" />
+    <Compile Include="Migrations\202204271601453_OrderAndOrderDetails.designer.cs">
+      <DependentUpon>202204271601453_OrderAndOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204251459155_FilePathAdded.resx">
       <DependentUpon>202204251459155_FilePathAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204271601453_OrderAndOrderDetails.resx">
+      <DependentUpon>202204271601453_OrderAndOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

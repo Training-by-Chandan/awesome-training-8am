@@ -28,9 +28,14 @@
     @if (totalItems > 0)
     {
         <li>
-            <i class="fa fa-shopping-cart">
-                <span class="badge badge-danger">@totalItems</span>
-            </i>
+          
+                <a href="@Url.Action("checkout","Home")">
+
+                    <i class="glyphicon glyphicon-shopping-cart">
+                        <span class="badge badge-danger">@totalItems</span>
+                    </i>
+                </a>
+           
         </li>
     }
 </ul>

@@ -1,0 +1,102 @@
+﻿@using Ecom.Web.ViewModels
+@{
+    ViewBag.Title = "Checkout";
+    var cartObj = Session["Cart"] as SessionViewModel;
+
+}
+@section Styles{
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        table{
+            width:100%;
+        }
+        th{
+            text-align:center;
+        }
+        td{
+            padding-left:5px;
+        }
+        td.center{
+            text-align:center;
+        }
+        td.right{
+            padding-right:5px;
+            text-align:right;
+            font-weight:bold;
+        }
+    </style>
+}
+
+<h2>Checkout</h2>
+
+@if (cartObj == null || cartObj.Products.Count == 0)
+{
+    <div class="row">
+
+        <span class="alert alert-danger">No items in cart</span>
+    </div>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>S. No.</th>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+                double grossTotal=0;
+            }
+            @foreach (var item in cartObj.Products)
+            {
+                i++;
+                var total = item.Quantity * item.Price;
+                grossTotal += total;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        <img src="@item.FilePath" width="50" height="50" />
+                    </td>
+                    <td>@item.ProductName</td>
+                    <td class="center">@item.Price</td>
+                    <td class="center">
+                      
+                        
+                                <a href="@Url.Action("AddToCart","Home", new { ProductId=item.ProductId,Quantity=-1 })" class="btn btn-success">
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </a>
+                                @item.Quantity
+                           
+                                <a href="@Url.Action("AddToCart","Home", new { ProductId=item.ProductId,Quantity=1 })" class="btn btn-success">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                </a>
+                           
+                       
+                    </td>
+                    <td class="center">@total</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="right" colspan="5">Total</td>
+                <td class="center">@grossTotal</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row">
+        <div class="col-lg-10"></div>
+        <div class="col-lg-2">
+            <a href="@Url.Action("ConfirmCheckout","Home")" class="btn btn-primary">Confirm Checkout </a>
+        </div>
+    </div>
+}
