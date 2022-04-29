@@ -12,12 +12,15 @@ namespace Ecom.Web.Areas.Admin.Controllers
     public class DashboardController : Controller
     {
         private readonly ICategoryService categoryService;
+        private readonly IOrderService orderService;
 
         public DashboardController(
-            ICategoryService categoryService
+            ICategoryService categoryService,
+            IOrderService orderService
             )
         {
             this.categoryService = categoryService;
+            this.orderService = orderService;
         }
 
         // GET: Admin/Dashboard
@@ -55,6 +58,12 @@ namespace Ecom.Web.Areas.Admin.Controllers
             {
                 return View(model);
             }
+        }
+
+        public ActionResult GetOrders()
+        {
+            var data = orderService.GetOrderList();
+            return View(data);
         }
     }
 }

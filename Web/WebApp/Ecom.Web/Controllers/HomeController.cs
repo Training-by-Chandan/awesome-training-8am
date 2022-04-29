@@ -8,6 +8,7 @@ using AutoMapper;
 using Ecom.Services;
 using Ecom.Web.ViewModels;
 using Hangfire;
+using Microsoft.AspNet.Identity;
 
 namespace Ecom.Web.Controllers
 {
@@ -15,14 +16,17 @@ namespace Ecom.Web.Controllers
     {
         private readonly IProductService productService;
         private readonly IMapper mapper;
+        private readonly IOrderService orderService;
 
         public HomeController(
             IProductService productService,
-            IMapper mapper
+            IMapper mapper,
+            IOrderService orderService
             )
         {
             this.productService = productService;
             this.mapper = mapper;
+            this.orderService = orderService;
         }
 
         public ActionResult Index()
@@ -79,9 +83,27 @@ namespace Ecom.Web.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public ActionResult ConfirmCheckout()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult ConfirmCheckout(string Address)
+        {
+            var cart = Session["Cart"] as SessionViewModel;
+            var res = orderService.AddOrder(cart, Address, User.Identity.GetUserId());
+            if (res.Item1)
+            {
+                Session["Cart"] = null;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

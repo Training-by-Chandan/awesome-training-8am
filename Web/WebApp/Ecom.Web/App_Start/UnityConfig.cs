@@ -43,6 +43,7 @@ namespace Ecom.Web
 
             container.RegisterType<ICategoryService, CategoryService>();
             container.RegisterType<IProductService, ProductService>();
+            container.RegisterType<IOrderService, OrderService>();
 
             #endregion Services
 
