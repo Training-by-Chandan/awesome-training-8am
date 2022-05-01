@@ -23,13 +23,19 @@ namespace Ecom.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Product
+        [Route("productlist")]
         public ActionResult Index()
         {
+#if DEBUG
             var data = productService.GetAll();
+#else
+            var data = productService.GetAll();
+#endif
             return View(data);
         }
 
         [HttpGet]
+        [Route("product-create")]
         public ActionResult Create()
         {
             ViewBag.Categories = categoryService.GetCategoriesListItems();
@@ -37,6 +43,7 @@ namespace Ecom.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Route("product-create")]
         public ActionResult Create(ProductViewModel model, HttpPostedFileBase productImage)
         {
             ViewBag.Categories = categoryService.GetCategoriesListItems();
@@ -93,10 +100,9 @@ namespace Ecom.Web.Areas.Admin.Controllers
                 var mappedFile = Server.MapPath(fullPath);
                 productImage.SaveAs(mappedFile);
                 //delete existing pictur
-                if (model.FilePath!=null)
+                if (model.FilePath != null)
                 {
-
-                System.IO.File.Delete(Server.MapPath(model.FilePath));
+                    System.IO.File.Delete(Server.MapPath(model.FilePath));
                 }
                 model.FilePath = fullPath;
             }

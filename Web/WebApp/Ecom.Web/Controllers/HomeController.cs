@@ -40,6 +40,8 @@ namespace Ecom.Web.Controllers
             Thread.Sleep(120000);
         }
 
+        [HttpGet]
+        [Route("about-us")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
