@@ -9,6 +9,8 @@ namespace Ecom.Repository
     {
         (bool, string) Create(T model);
 
+        (bool, string) Delete(Guid Id);
+
         (bool, string) Edit(T model);
 
         T FindById(Guid Id);

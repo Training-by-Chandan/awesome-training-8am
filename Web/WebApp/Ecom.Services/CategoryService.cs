@@ -15,7 +15,13 @@ namespace Ecom.Services
     {
         (bool, string) Create(CategoryViewModel model);
 
+        (bool, string) Delete(Guid Id);
+
+        (bool, string) Edit(CategoryViewModel model);
+
         List<CategoryViewModel> GetAll();
+
+        CategoryViewModel GetbyId(Guid Id);
 
         List<SelectListItem> GetCategoriesListItems();
     }
@@ -73,6 +79,48 @@ namespace Ecom.Services
                 Text = p.Name,
                 Value = p.Id.ToString()
             }).ToList();
+        }
+
+        public CategoryViewModel GetbyId(Guid Id)
+        {
+            var data = categoryRepository.FindById(Id);
+            var res = mapper.Map<Category, CategoryViewModel>(data);
+            return res;
+        }
+
+        public (bool, string) Edit(CategoryViewModel model)
+        {
+            try
+            {
+                var existing = categoryRepository.FindById(model.Id);
+                if (existing == null) return (false, "Category not found");
+
+                var category = mapper.Map<CategoryViewModel, Category>(model, existing);
+
+                return categoryRepository.Edit(category);
+            }
+            catch (Exception ex)
+            {
+                //todo log the exceptions somewhere
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                return (false, ex.Message);
+            }
+        }
+
+        public (bool, string) Delete(Guid Id)
+        {
+            try
+            {
+                var existing = categoryRepository.FindById(Id);
+                if (existing == null) return (false, "Category not found");
+                return categoryRepository.Delete(Id);
+            }
+            catch (Exception ex)
+            {
+                //todo log the exceptions somewhere
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                return (false, ex.Message);
+            }
         }
     }
 }

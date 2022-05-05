@@ -1,0 +1,22 @@
+
+<table style="border: 4px; width: auto;border-style: solid;">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Active</th>
+        <th>Action</th>
+</thead>
+<tbody>
+
+    <tr *ngFor="let i of categories">
+        <td>{{i.Name}}</td>
+        <td>{{i.Description}}</td>
+        <td>{{i.Active}}</td>
+        <td>
+            <!-- <a [routerLink]="['/category/edit', i.id]">Edit</a>
+            <a [routerLink]="['/category/delete', i.id]">Delete</a> -->
+        </td>    
+    </tr>  
+</tbody>
+</table>
