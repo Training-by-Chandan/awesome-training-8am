@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Ecom.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = StrConst.Roles.Customer)]
     public class ProductController : Controller
     {
         private readonly IProductService productService;

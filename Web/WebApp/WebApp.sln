@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecom.Services", "Ecom.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecom.Api", "Ecom.Api\Ecom.Api.csproj", "{E2E5F2C0-C962-41A4-8228-6B64AA930581}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecom.WebTests", "Ecom.WebTests\Ecom.WebTests.csproj", "{B3DBAA3E-A38D-4E53-909D-A80D57341E79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E2E5F2C0-C962-41A4-8228-6B64AA930581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2E5F2C0-C962-41A4-8228-6B64AA930581}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2E5F2C0-C962-41A4-8228-6B64AA930581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3DBAA3E-A38D-4E53-909D-A80D57341E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3DBAA3E-A38D-4E53-909D-A80D57341E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3DBAA3E-A38D-4E53-909D-A80D57341E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3DBAA3E-A38D-4E53-909D-A80D57341E79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
