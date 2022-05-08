@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Reports</h2>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index","Report", new { reportName = "personInfo"})" class="btn btn-outline-info">Person Report</a>
+    </div>
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index","Report", new { reportName = "country"})" class="btn btn-outline-info">Country Wise Report</a>
+    </div>
+</div>
+<iframe id="frmReport" src="../../Reports/ReportTemplate.aspx?reportUrl=@ViewBag.report" width="1500" height="500" />
